@@ -11,5 +11,5 @@ export function zip(...args) {
 }
 
 export function formatPath(path) {
-  return path.replace(/\.mdx$/, '')
+  return path.replace(/\.mdx$/, '').replace("posts/", '')
 }

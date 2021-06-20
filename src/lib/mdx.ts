@@ -7,7 +7,7 @@ import gfmPlugin from "remark-gfm"
 import slugPlugin from "remark-slug"
 import type { PostMeta } from "types/post"
 const ROOT_PATH = process.cwd()
-export const POSTS_PATH = path.join(ROOT_PATH, "src", "data", "posts")
+export const POSTS_PATH = path.join(ROOT_PATH, "src", "pages", "posts")
 
 export const getAllPosts = (category?: PostMeta["category"]) => {
   const PATH = path.join(POSTS_PATH)
@@ -25,8 +25,6 @@ export const getAllPosts = (category?: PostMeta["category"]) => {
         const slug = path.basename(filePath).replace(".mdx", "")
         // Use gray-matter to extract the post meta from post content
         const data = matter(source).data as PostMeta
-
-        console.log(data)
 
         return {
           ...data,
@@ -55,8 +53,6 @@ export const getPostBySlug = async (slug: string) => {
   // Get the content of the file
   const source = fs.readFileSync(path.join(POSTS_PATH, `${slug}.mdx`), "utf8")
 
-  console.log(slug)
-  console.log(source)
 
   const { code, frontmatter } = await bundleMDX(source)
 

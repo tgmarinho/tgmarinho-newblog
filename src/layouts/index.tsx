@@ -39,28 +39,38 @@ const mdxComponents = {
 
 
 type Props = {
-  frontMatter: PostMeta;
+  frontMatter: {
+    title: string,
+    description: string,
+    publishedAt: string,
+    image: string,
+    category:string,
+    background?: string,
+    __resourcePath: string,
+    layout: string
+  };
   children: ReactNode;
 
 }
 
 
 export default function Layout({ frontMatter, children }: Props) {
-  const slug = frontMatter?.slug
+  console.log({frontMatter})
+  const slug = formatPath(frontMatter?.__resourcePath)
   return (
     <MDXProvider components={mdxComponents}>
       <Article>
         <Head>
           <title>{frontMatter?.title}</title>
           <meta name="description" content={frontMatter?.description} />
-          <meta name="author" content="Nanda Syahrasyad" />
+          <meta name="author" content="Thiago Marinho" />
           <meta property="og:title" content={frontMatter?.title} />
           <meta property="og:description" content={frontMatter?.description} />
           <meta
             property="og:image"
-            content={`https://nan.fyi/og-image/${slug}.png`}
+            content={`https://tgmarinho.com/og-image/${slug}.png`}
           />
-          <meta property="og:url" content={`https://nan.fyi/${slug}`} />
+          <meta property="og:url" content={`https://tgmarinho.com/posts/${slug}`} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <Header>
@@ -69,14 +79,14 @@ export default function Layout({ frontMatter, children }: Props) {
         </Header>
         <Meta>
           <Author>
-            <Avatar src="/avatar.jpg" alt="Nanda Syahrasyad" />
-            <p>Nanda Syahrasyad</p>
+            <Avatar src="/tgmarinho.jpg" alt="Thiago Marinho" />
+            <p>Thiago Marinho</p>
           </Author>
-          <p>Last updated {formatter.format(new Date(frontMatter?.editedAt))}</p>
+          <p>Last updated {formatter.format(new Date(frontMatter?.publishedAt))}</p>
         </Meta>
         {children}
         <FormContainer>
-          <FeedbackForm slug={frontMatter.slug} />
+          <FeedbackForm slug={slug} />
           <NewsletterForm />
         </FormContainer>
       </Article>
@@ -92,7 +102,7 @@ const Avatar = styled.img`
   height: 32px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid var(--gray400);
+  /* border: 2px solid var(--gray400); */
 `
 
 const Author = styled.div`
@@ -210,7 +220,7 @@ const Article = styled.article`
 
   @media screen and (min-width: 770px) {
     grid-template-columns:
-      1fr minmax(0, 6rem) minmax(0, 4rem) 2rem min(65ch, calc(100% - 2rem))
+      1fr minmax(0, 6rem) minmax(0, 4rem) 2rem min(85ch, calc(100% - 2rem))
       2rem minmax(0, 4rem) minmax(0, 6rem) 1fr;
 
     > * {

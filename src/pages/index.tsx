@@ -13,14 +13,13 @@ import {  PostMeta } from '@/types/post'
 
 export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
   const posts = getAllPosts("post");
-  console.log(posts)
 
   return { props: { posts } }
 }
 
 
 export default function HomePage({posts}) {
-  posts.sort((a, b) => (new Date(a.editedAt) < new Date(b.editedAt) ? 1 : -1))
+  posts.sort((a, b) => (new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1))
   return (
     <>
       <Head>
@@ -30,22 +29,22 @@ export default function HomePage({posts}) {
         <header className="mx-auto mb-24 space-y-16">
           <Title tw="mx-auto">@tgmarinho</Title>
           <p tw="text-center max-w-2xl mx-auto px-8 font-serif text-2xl">
-            An blog about life and software development, by
+          An blog about Live and Code, by
             <br />
             <ExternalLink href="https://tgmarinho.com">
-              Thiago Marinho
+              Thiago Marinho 👨‍💻
             </ExternalLink>
             .
           </p>
         </header>
         <Posts>
           <Divider />
-          {posts.map(({ title, slug, description, editedAt }) => (
+          {posts.map(({ title, slug, description, publishedAt }) => (
             <li
               key={slug}
               tw="px-8 py-4 hover:bg-gray-200 rounded-xl"
             >
-              <Link href={`blog/${slug}`}>
+              <Link href={`posts/${slug}`}>
                 <a tw="flex items-center justify-between cursor-pointer space-x-8">
                   <div tw="space-y-4">
                     <h1 tw="text-3xl font-serif">{title}</h1>
@@ -56,7 +55,7 @@ export default function HomePage({posts}) {
                         month: 'long',
                         year: 'numeric',
                         day: 'numeric',
-                      }).format(new Date(editedAt))}
+                      }).format(new Date(publishedAt))}
                     </p>
                   </div>
                   <p tw="text-2xl text-gray-600">
@@ -81,7 +80,7 @@ const Title = styled.h1`
 const Posts = styled.ul`
   ${tw`pt-16 space-y-4`}
   display: grid;
-  grid-template-columns: 1fr min(65ch, 100%) 1fr;
+  grid-template-columns: 1fr min(85ch, 100%) 1fr;
   position: relative;
 
   > * {

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FaGithub, FaTwitter } from 'react-icons/fa'
+import { FaGithub, FaTwitter, FaTrademark,FaLinkedin, FaYoutube } from 'react-icons/fa'
 import 'twin.macro'
 
 export default function Navigation({ style, className }) {
@@ -8,12 +8,12 @@ export default function Navigation({ style, className }) {
       <ul className="flex items-center p-0 text-xl list-none">
         <li className="font-serif font-bold">
           <Link href="/">
-            <a className="hover:text-green-600">NaN</a>
+            <a className="hover:text-green-600"><FaTrademark /></a>
           </Link>
         </li>
         <li tw="ml-auto" className="mr-4">
           <a
-            href="https://github.com/narendrasss/blog"
+            href="https://github.com/tgmarinho/tgmarinho-newblog"
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-600"
@@ -23,7 +23,7 @@ export default function Navigation({ style, className }) {
         </li>
         <li>
           <a
-            href="https://twitter.com/nansdotio"
+            href="https://twitter.com/tgmarinho"
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-600"
@@ -31,6 +31,26 @@ export default function Navigation({ style, className }) {
             <FaTwitter />
           </a>
         </li>
+        {/* <li>
+          <a
+            href="https://linkedin.com/in/tgmarinho"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-green-600"
+          >
+            <FaLinkedin />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://youtube.com/tgmarinho"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-green-600"
+          >
+            <FaYoutube />
+          </a>
+        </li> */}
       </ul>
     </nav>
   )

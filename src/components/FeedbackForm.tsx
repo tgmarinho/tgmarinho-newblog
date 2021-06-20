@@ -115,7 +115,7 @@ function submitFeedback(evt, slug) {
     message,
   })
   return new Promise((resolve, reject) => {
-    window
+    globalThis
       .fetch(`/api/feedback?${params}`, {
         method: 'POST',
       })
