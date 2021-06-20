@@ -6,4 +6,5 @@ module.exports = withMdxEnhanced({
   usesSrc: true,
 })({
   target: 'serverless',
+  webpack5: false,
 })
