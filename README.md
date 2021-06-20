@@ -1,7 +1,7 @@
-![NaN homepage](nan_homepage.png)
+![@tgmarinho homepage](tgmarinho_homepage.png)
 
-Hello! This repository contains the source code for [Not a Number](https://nan.fyi/), my personal blog on computer science and web development with a focus on interactive articles. Feel free to look around 🎉
-
+Hello! This repository contains the source code for [@tgmarinho](https://tgmarinho.com/), my personal blog about life and code. 🎉
+It was inspired and forked from [Not a Number](https://nan.fyi/).
 ## Getting Started
 
 This blog is built with [Next.js](https://nextjs.org/), [MDX](https://mdxjs.com/) and [Tailwind](https://tailwindcss.com/), supercharged with [styled-components](https://styled-components.com/) and [twin.macro](https://github.com/ben-rogerson/twin.macro). The backend for collecting feedback is built with Next.js and [Fauna](https://fauna.com/).
@@ -11,13 +11,13 @@ To get started:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/narendrasss/NotANumber.git
+git clone https://github.com/tgmarinho/tgmarinho-newblog.git
 ```
 
 2. Cd into the directory and install dependencies:
 
 ```bash
-cd NotANumber
+cd tgmarinho-newblog
 yarn install
 ```
 
@@ -38,5 +38,5 @@ To get the feedback form working using Fauna:
 FAUNA_SECRET_KEY=<my api key>
 ```
 
-Alternatively, you can change where the feedback form submits by modifying the `submitFeedback` function in [FeedbackForm.js](https://github.com/narendrasss/NotANumber/blob/23cdaa5e0b5f75bbdabb8a53690061f2a6f84595/components/FeedbackForm.js#L98).
+Alternatively, you can change where the feedback form submits by modifying the `submitFeedback` function in [FeedbackForm.js](https://github.com/tgmarinho/tgmarinho-newblog/blob/23cdaa5e0b5f75bbdabb8a53690061f2a6f84595/components/FeedbackForm.js#L98).
 # tgmarinho-newblog
