@@ -3,6 +3,7 @@ import glob from "glob"
 import matter from "gray-matter"
 import { bundleMDX } from "mdx-bundler"
 import path from "path"
+import postcss from "postcss"
 import gfmPlugin from "remark-gfm"
 import slugPlugin from "remark-slug"
 import type { PostMeta } from "types/post"
@@ -33,12 +34,7 @@ export const getAllPosts = (category?: PostMeta["category"]) => {
       })
 
       // filter post by category if specified
-      // .filter((post) => {
-      //   // default to all posts
-      //   if (!category) return true
-
-      //   return post.category === category
-      // })
+      .filter((post) => post?.status !== 'preview')
 
       // Sort posts by published date
       .sort(
