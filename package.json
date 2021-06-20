@@ -1,11 +1,21 @@
 {
-  "name": "blog",
-  "version": "0.1.0",
+  "name": "tgmarinho.com",
+  "description": "Blog made with Next, Typescript and Tailwind",
+  "version": "1.0.0",
   "private": true,
+  "author": "Thiago Marinho <tgmarinho@gmail.com> (@tgmarinho)",
+  "license": "MIT",
+  "keywords": [
+    "next",
+    "starter",
+    "typescript"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
+    "type-check": "tsc"
   },
   "dependencies": {
     "@babel/parser": "^7.13.10",
@@ -18,6 +28,7 @@
     "clsx": "^1.1.1",
     "faunadb": "^4.0.3",
     "framer-motion": "^3.1.1",
+    "mdx-bundler": "^4.1.0",
     "next": "10.0.6",
     "next-mdx-enhanced": "^5.0.0",
     "postcss": "^8.2.2",
@@ -27,6 +38,8 @@
     "react-dom": "17.0.1",
     "react-icons": "^4.1.0",
     "react-simple-code-editor": "^0.11.0",
+    "remark-gfm": "^1.0.0",
+    "remark-slug": "^6.0.0",
     "rfdc": "^1.1.4",
     "styled-components": "^5.2.1",
     "tailwindcss": "^2.0.2",
@@ -35,6 +48,11 @@
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^3.2.2",
+    "@types/node": "^15.12.4",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "16.9.9",
+    "@typescript-eslint/eslint-plugin": "4.6.1",
+    "@typescript-eslint/parser": "4.6.1",
     "babel-plugin-macros": "^3.0.1",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
@@ -42,7 +60,12 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1"
+    "next-pwa": "5.0.6",
+    "nprogress": "0.2.0",
+    "prettier": "^2.2.1",
+    "react-loading-skeleton": "2.2.0",
+    "reakit": "1.2.5",
+    "typescript": "^4.3.4"
   },
   "babelMacros": {
     "twin": {

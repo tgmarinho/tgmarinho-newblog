@@ -2,14 +2,14 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    '.src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    '.src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       fontFamily: {
         serif: ['Recoleta', ...defaultTheme.fontFamily.serif],
-        sans: ['Karla', ...defaultTheme.fontFamily.sans],
+        sans: ['Spectral', ...defaultTheme.fontFamily.sans],
         mono: ['DM Mono', ...defaultTheme.fontFamily.mono],
       },
       colors: {
