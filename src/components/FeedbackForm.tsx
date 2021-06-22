@@ -59,7 +59,6 @@ export default function FeedbackForm({ slug, className }) {
       </label>
       <textarea
         id="message"
-        type="text"
         name="message"
         className="p-2 border-2 rounded-lg focus:outline-none focus:border-blue-400"
         onChange={() => dispatch(events.Change)}
@@ -113,7 +112,7 @@ function submitFeedback(evt, slug) {
     slug,
     name,
     message,
-  })
+  } as any) 
   return new Promise((resolve, reject) => {
     globalThis
       .fetch(`/api/feedback?${params}`, {

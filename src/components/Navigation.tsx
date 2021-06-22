@@ -1,5 +1,6 @@
+import React from 'react'
 import Link from 'next/link'
-import { FaGithub, FaTwitter, FaTrademark,FaLinkedin, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaTwitter, FaTrademark } from 'react-icons/fa'
 import 'twin.macro'
 
 export default function Navigation({ style, className }) {

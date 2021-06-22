@@ -96,7 +96,7 @@ function subscribe(evt) {
     return
   }
 
-  const params = new URLSearchParams({ email })
+  const params = new URLSearchParams({ email } as any)
   return new Promise((resolve, reject) => {
     window.fetch(`/api/subscribe?${params}`).then((response) => {
       if (response.ok) {

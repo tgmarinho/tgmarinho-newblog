@@ -1,4 +1,5 @@
-import tw, { styled, theme } from 'twin.macro'
+import tw, { theme, styled } from 'twin.macro'
+// import styled from 'twin.macro'
 import { HiArrowRight } from 'react-icons/hi'
 
 import CodeBlock from '@/elements/CodeBlock'
@@ -71,7 +72,7 @@ const Plugin = styled.li`
 
 // --
 
-function Tree({ isSquare }) {
+function Tree({ isSquare = false }) {
   return (
     <TreeWrapper>
       <RootWrapper>
