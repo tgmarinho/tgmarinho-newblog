@@ -17,7 +17,7 @@ export default function TreeSandbox({
   children,
   getParent,
   ...props
-}) {
+}: any) {
   const [code, setCode] = React.useState(initialCode)
   const [showAllProps, toggle] = React.useReducer((state) => !state, showProps)
   const [tree, error] = useSyntaxTree(code, { getParent })

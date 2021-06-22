@@ -1,5 +1,5 @@
 import React from 'react'
-import tw, { styled, theme } from 'twin.macro'
+import { styled, theme } from 'twin.macro'
 import { BsPlayFill, BsPauseFill } from 'react-icons/bs'
 
 import Button from '@/elements/Button'
@@ -8,7 +8,7 @@ import exec from '@/lib/exec'
 import usePlayer from '@/lib/usePlayer'
 
 // Macros can't use absolute imports because they get stripped out
-import snapshot from '../../lib/snapshot.macro'
+const snapshot = require('../../lib/snapshot.macro')
 
 import Tree from './shared/Tree'
 import useSyntaxTree from './shared/useSyntaxTree'

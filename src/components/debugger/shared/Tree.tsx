@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React from 'react'
 import { motion, AnimateSharedLayout } from 'framer-motion'
 import tw, { styled, theme } from 'twin.macro'
 
 import CodeBlock from '@/elements/CodeBlock'
 
-const TreeContext = React.createContext()
+const TreeContext = React.createContext({} as any)
 
 const useTreeContext = () => React.useContext(TreeContext)
 
@@ -23,7 +24,7 @@ function Tree({
   variant = Tree.variants.Node,
   depth = 0,
   whitelist = new Set(),
-}) {
+}: any) {
   return (
     <motion.ul
       layout="position"
@@ -48,7 +49,7 @@ Tree.variants = {
 
 export default Tree
 
-function AstNode({ node, path, depth }) {
+function AstNode({ node, path, depth }: any) {
   const {
     depth: initialDepth,
     code,
@@ -115,7 +116,7 @@ function AstNode({ node, path, depth }) {
           </ul>
         )}
       </Node>
-    )
+    ) as any
   }
 
   if (typeof node === 'object') {
@@ -134,12 +135,12 @@ function AstNode({ node, path, depth }) {
           path={[...path, key]}
           depth={depth + 1}
         />
-      )
+      ) as any
     })
   }
 }
 
-function AstNodeGroup({ name, nodes, path, depth }) {
+function AstNodeGroup({ name, nodes, path, depth }: any) {
   const { depth: initialDepth } = useTreeContext()
   const [isOpen, setIsOpen] = React.useState(depth <= initialDepth)
 
@@ -174,7 +175,7 @@ function AstNodeGroup({ name, nodes, path, depth }) {
         </ul>
       )}
     </Node>
-  )
+  ) as any
 }
 
 // -- Styled --

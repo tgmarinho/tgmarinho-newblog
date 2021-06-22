@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import {
   HiArrowLeft,
@@ -35,7 +36,7 @@ function Algorithm({
   controls,
   editable,
   delay = 400,
-}) {
+}: any) {
   if (!Array.isArray(algorithm)) {
     algorithm = [algorithm]
   }

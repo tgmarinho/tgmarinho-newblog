@@ -1,0 +1,8 @@
+# General
+**/node_modules/
+
+next-env.d.ts
+next.config.js
+.next/
+public/sw.js
+public/workbox-79663c73.js

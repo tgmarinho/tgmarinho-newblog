@@ -1,6 +1,6 @@
+/* eslint-disable prettier/prettier */
+// @ts-nocheck
 const { createMacro } = require('babel-plugin-macros')
-
-module.exports = createMacro(snapshot)
 
 function snapshot({ references, babel: { types: t } }) {
   if (!references.default) {
@@ -30,9 +30,9 @@ function snapshot({ references, babel: { types: t } }) {
           )
         },
         DebuggerStatement(path) {
-          const scope = Object.keys(
-            path.scope.getAllBindings()
-          ).filter((name) => this.declared.has(name))
+          const scope = Object.keys(path.scope.getAllBindings()).filter(
+            (name) => this.declared.has(name)
+          )
           path.replaceWith(
             createSnapshot(t, [
               ...scope,
@@ -117,3 +117,5 @@ function createObjectExpression(t, entries) {
     )
   )
 }
+
+module.exports = createMacro(snapshot)

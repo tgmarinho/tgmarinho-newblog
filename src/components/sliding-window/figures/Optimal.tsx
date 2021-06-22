@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Item from '../Item'
 import SlidingWindow from '../SlidingWindow'
 

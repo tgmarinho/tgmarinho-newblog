@@ -71,7 +71,7 @@ export default function NewsletterForm({ className }) {
           { 'bg-opacity-50': state === formState.Loading }
         )}
         whileTap={{ scale: 0.95 }}
-        disabled={state === formState.Loading }
+        disabled={state === formState.Loading}
       >
         {state === formState.Start && 'Subscribe'}
         {state === formState.Loading && (

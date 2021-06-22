@@ -112,7 +112,7 @@ function submitFeedback(evt, slug) {
     slug,
     name,
     message,
-  } as any) 
+  } as any)
   return new Promise((resolve, reject) => {
     globalThis
       .fetch(`/api/feedback?${params}`, {

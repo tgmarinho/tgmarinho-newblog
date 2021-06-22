@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { AnimateSharedLayout, motion } from 'framer-motion'
 import { BsTriangleFill, BsCheck, BsX } from 'react-icons/bs'
 import tw, { styled } from 'twin.macro'

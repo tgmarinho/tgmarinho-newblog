@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { motion, AnimateSharedLayout } from 'framer-motion'
 import { BsTriangleFill } from 'react-icons/bs'
 

@@ -1,26 +1,25 @@
-import React from 'react'
+// @ts-nocheck
+/* eslint-disable */
 import Head from 'next/head'
 import Link from 'next/link'
 import tw, { styled } from 'twin.macro'
 import { HiArrowRight } from 'react-icons/hi'
-import { getAllPosts, getPostBySlug } from "@/lib/mdx"
+import { getAllPosts } from '@/lib/mdx'
 
 import ExternalLink from '@/elements/ExternalLink'
-import { formatPath } from '@/lib/utils'
 import { GetStaticProps } from 'next'
-import {  PostMeta } from '@/types/post'
-
-
+import { PostMeta } from '@/types/post'
 
 export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
-  const posts = getAllPosts("post");
+  const posts = getAllPosts('post')
 
   return { props: { posts } }
 }
 
-
-export default function HomePage({posts}) {
-  posts.sort((a, b) => (new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1))
+export default function HomePage({ posts }) {
+  posts.sort((a, b) =>
+    new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
+  )
   return (
     <>
       <Head>
@@ -30,10 +29,10 @@ export default function HomePage({posts}) {
         <header className="mx-auto mb-24 space-y-16">
           <Title tw="mx-auto">@tgmarinho</Title>
           <p tw="text-center max-w-2xl mx-auto px-8 font-serif text-2xl">
-          An blog about Live and Code, by
+            An blog about Live and Code, by
             <br />
             <ExternalLink href="https://tgmarinho.com">
-              Thiago Marinho 👨‍💻
+              Thiago Marinho <span>👨‍💻</span>
             </ExternalLink>
             .
           </p>
@@ -41,10 +40,7 @@ export default function HomePage({posts}) {
         <Posts>
           <Divider />
           {posts.map(({ title, slug, description, publishedAt }) => (
-            <li
-              key={slug}
-              tw="px-8 py-4 hover:bg-gray-200 rounded-xl"
-            >
+            <li key={slug} tw="px-8 py-4 hover:bg-gray-200 rounded-xl">
               <Link href={`posts/${slug}`}>
                 <a tw="flex items-center justify-between cursor-pointer space-x-8">
                   <div tw="space-y-4">

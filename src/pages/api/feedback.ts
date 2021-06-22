@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import faunadb from 'faunadb'
 
 const FEEDBACK_INDEX = 'feedback_by_slug'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Item from '../Item'
 
 export default function Derive({ state }) {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import tw, { styled, theme } from 'twin.macro'
@@ -18,7 +19,6 @@ import Subheading from '@/elements/Subheading'
 import ProblemStatement from '@/elements/ProblemStatement'
 
 import { formatPath } from '@/lib/utils'
-import { Post, PostMeta } from '@/types/post'
 
 const formatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
@@ -37,22 +37,20 @@ const mdxComponents = {
   h3: Subheading,
 }
 
-
 type Props = {
   frontMatter: {
-    title: string,
-    description: string,
-    publishedAt: string,
-    image: string,
-    category:string,
-    background?: string,
-    __resourcePath: string,
+    title: string
+    description: string
+    publishedAt: string
+    image: string
+    blurb?: string
+    category: string
+    background?: string
+    __resourcePath: string
     layout: string
-  };
-  children: ReactNode;
-
+  }
+  children: ReactNode
 }
-
 
 export default function Layout({ frontMatter, children }: Props) {
   const slug = formatPath(frontMatter?.__resourcePath)
@@ -69,7 +67,10 @@ export default function Layout({ frontMatter, children }: Props) {
             property="og:image"
             content={`https://tgmarinho.com/og-image/${slug}.png`}
           />
-          <meta property="og:url" content={`https://tgmarinho.com/posts/${slug}`} />
+          <meta
+            property="og:url"
+            content={`https://tgmarinho.com/posts/${slug}`}
+          />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <Header>
@@ -81,7 +82,9 @@ export default function Layout({ frontMatter, children }: Props) {
             <Avatar src="/tgmarinho.jpg" alt="Thiago Marinho" />
             <p>Thiago Marinho</p>
           </Author>
-          <p>Last updated {formatter.format(new Date(frontMatter?.publishedAt))}</p>
+          <p>
+            Last updated {formatter.format(new Date(frontMatter?.publishedAt))}
+          </p>
         </Meta>
         {children}
         <FormContainer>

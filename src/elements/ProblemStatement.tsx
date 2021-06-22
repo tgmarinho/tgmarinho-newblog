@@ -1,4 +1,5 @@
-import tw, { styled } from 'twin.macro'
+// @ts-nocheck
+import { styled } from 'twin.macro'
 
 function ProblemStatement({ children, className }) {
   return (
