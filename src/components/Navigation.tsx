@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FaGithub, FaTwitter, FaTrademark } from 'react-icons/fa'
+import { FaGithub, FaTwitter, FaTrademark, FaSearch } from 'react-icons/fa'
 import 'twin.macro'
 
 export default function Navigation({ style, className }) {
@@ -14,8 +14,15 @@ export default function Navigation({ style, className }) {
           </Link>
         </li>
         <li tw="ml-auto" className="mr-4">
+          <Link href="/search">
+            <a className="hover:text-green-600">
+              <FaSearch />
+            </a>
+          </Link>
+        </li>
+        <li className="mr-4">
           <a
-            href="https://github.com/tgmarinho/tgmarinho-newblog"
+            href="https://github.com/tgmarinho"
             target="_blank"
             rel="noreferrer"
             className="hover:text-green-600"
