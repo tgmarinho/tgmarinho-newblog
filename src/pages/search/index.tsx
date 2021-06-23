@@ -32,11 +32,7 @@ export default function SearchPage() {
         <Posts>
           <Divider />
           <Search />
-          
         </Posts>
-       
-        
-        
       </div>
     </>
   )

@@ -10,7 +10,6 @@ const algolia = {
 }
 
 import { Posts } from '@/components/Posts'
-import { Divider } from '@/components/Divider'
 
 const searchClient = algoliasearch(algolia.appId, algolia.searchOnlyApiKey)
 

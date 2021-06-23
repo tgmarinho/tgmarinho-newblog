@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { HiArrowRight } from 'react-icons/hi'
-import tw, { styled } from 'twin.macro'
+import 'twin.macro'
 
 export const Post = (props) => {
   console.log(props)

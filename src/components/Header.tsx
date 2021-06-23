@@ -1,4 +1,4 @@
-import tw, { styled } from 'twin.macro'
+import 'twin.macro'
 import { Title } from '@/components/Title'
 import ExternalLink from '@/elements/ExternalLink'
 
