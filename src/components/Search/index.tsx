@@ -16,7 +16,7 @@ const searchClient = algoliasearch(algolia.appId, algolia.searchOnlyApiKey)
 
 export function Search() {
   // maybe change some color when hasFocos
-  const [setHasFocus] = useState(false)
+  // const [setHasFocus] = useState(false)
   const [search, setSearch] = useState(null)
 
   console.log(search)
@@ -30,12 +30,12 @@ export function Search() {
       >
         <SearchBox
           aria-label="Search here"
-          onFocus={() => {
-            setHasFocus(true)
-          }}
-          onBlur={() => {
-            setHasFocus(false)
-          }}
+          // onFocus={() => {
+          //   setHasFocus(true)
+          // }}
+          // onBlur={() => {
+          //   setHasFocus(false)
+          // }}
           onChange={(e) => setSearch(e.target.value)}
           translations={{ placeholder: 'Search here...' }}
         />
