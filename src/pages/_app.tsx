@@ -68,6 +68,16 @@ const Main = styled.main`
 
   background: var(--color-background);
   color: var(--color-text);
+
+  /* old blog */
+  --borders: #dedede;
+  --postColor: #111;
+  --texts: #555555;
+  --highlight: #1fa1f2;
+  --mediumBackground: #d9e3eb;
+  --white: #fff;
+  --black: #222;
+  --code: #555555;
 `
 
 const TopNavigation = styled(Navigation)`

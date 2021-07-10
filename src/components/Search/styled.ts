@@ -53,6 +53,7 @@ export const SearchWrapper = styled.section`
     font-size: 1.6rem;
     padding: 0.5rem;
     width: 100%;
+    padding: 1rem;
     &::placeholder {
       color: var(--texts);
     }
