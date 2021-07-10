@@ -3,7 +3,6 @@ import { HiArrowRight } from 'react-icons/hi'
 import 'twin.macro'
 
 export const Post = (props) => {
-  console.log(props)
   const { slug, title, description, publishedAt } = props.content
   return (
     <li key={slug} tw="px-8 py-4 hover:bg-gray-200 rounded-xl">

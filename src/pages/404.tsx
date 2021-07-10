@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
   return { props: { posts } }
 }
 
-export default function HomePage({ posts }) {
+export default function PageNotFound({ posts }) {
   posts.sort((a, b) =>
     new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
   )
@@ -33,7 +33,7 @@ export default function HomePage({ posts }) {
   return (
     <>
       <Head>
-        <title>@tgmarinho</title>
+        <title>404 - Page Not Found - But go to home - @tgmarinho</title>
       </Head>
       <div tw="py-32">
         <Header />

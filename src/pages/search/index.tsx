@@ -10,6 +10,7 @@ import { Divider } from '@/components/Divider'
 import { GetStaticProps } from 'next'
 import { PostMeta } from '@/types/post'
 import { Header } from '@/components/Header'
+import SEO from '@/components/SEO'
 
 export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
   const posts = getAllPosts('post')
@@ -25,7 +26,7 @@ export default function SearchPage() {
       </Head>
       <div tw="py-32">
         <Header />
-
+        <SEO />
         <Posts>
           <Divider />
           <Search />
