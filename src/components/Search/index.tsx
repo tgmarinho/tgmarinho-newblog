@@ -16,7 +16,7 @@ const searchClient = algoliasearch(algolia.appId, algolia.searchOnlyApiKey)
 
 export function Search() {
   // maybe change some color when hasFocos
-  const [hasFocus, setHasFocus] = useState(false)
+  const [setHasFocus] = useState(false)
   const [search, setSearch] = useState(null)
 
   console.log(search)
