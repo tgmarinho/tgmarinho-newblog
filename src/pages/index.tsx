@@ -39,7 +39,6 @@ export default function HomePage({ posts }) {
         {/* <div onClick={() => router.push('search')}>
           <Search />
         </div> */}
-
         <Posts>
           <Divider />
           {posts.map((post: PostMeta) => (
