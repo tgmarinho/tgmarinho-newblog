@@ -1152,7 +1152,7 @@ Para testar isso ai fizemos uma chamada simples no dashboard:
 ```
 import React from 'react';
 import api from '~/services/api';
-// import { Container } from './styles';
+// import { Layout } from './styles';
 
 export default function Dashboard() {
   api.get('appointments');
@@ -1220,7 +1220,7 @@ o `index.js`:
 import React, { useState, useEffect, useRef } from 'react';
 import { useField } from '@rocketseat/unform';
 import api from '~/services/api';
-import { Container } from './styles';
+import { Layout } from './styles';
 
 export default function AvatarInput() {
   const ref = useRef();
@@ -1252,7 +1252,7 @@ export default function AvatarInput() {
   }
 
   return (
-    <Container>
+    <Layout>
       <label htmlFor="avatar">
         <img
           src={
@@ -1269,7 +1269,7 @@ export default function AvatarInput() {
           ref={ref}
         />
       </label>
-    </Container>
+    </Layout>
   );
 }
 ```
@@ -1288,14 +1288,14 @@ const { defaultValue, registerField } =  useField('avatar');
 Nós usamos esse componente AvatarInput no Profile:  
 
 ```
-  <Container>
+  <Layout>
       <Form initialData={profile} onSubmit={handleSubmit}>
         <AvatarInput name="avatar_id" />
         <Input name="name" placeholder="Nome completo" />
         ....
         ...
         ...
-        </Container>
+        </Layout>
 ```
 e no `initialData={profile}` tem vários campos (fields) e um deles é o avatar do usuário que pode estar `null` ou com um objeto cheio de valores `{ id, path, url }`.
 
@@ -1356,7 +1356,7 @@ O input upload de imagem é do tipo file, com id avatar para htmlFor="avatar" fa
 
 ```
 return (
-    <Container>
+    <Layout>
       <label htmlFor="avatar">
         <img
           src={
@@ -1373,7 +1373,7 @@ return (
           ref={ref}
         />
       </label>
-    </Container>
+    </Layout>
   );
 ```
  

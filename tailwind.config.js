@@ -7,6 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xs: ['8px', '13px'],
+        sm: ['14px', '20px'],
+        base: ['16px', '24px'],
+        lg: ['20px', '28px'],
+        xl: ['24px', '32px'],
+      },
       fontFamily: {
         serif: ['Recoleta', ...defaultTheme.fontFamily.serif],
         sans: ['Spectral', ...defaultTheme.fontFamily.sans],

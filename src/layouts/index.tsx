@@ -93,7 +93,7 @@ export default function Layout({ frontMatter, children }: Props) {
         </FormContainer>
       </Article>
       <Footer>
-        <Navigation style={{ width: 'min(65ch, 100%)' }} tw="mt-8" />
+        <Navigation tw="mt-8" />
       </Footer>
     </MDXProvider>
   )
@@ -121,20 +121,21 @@ const Blurb = styled.p`
   ${tw`font-serif text-2xl`}
 
   text-align: center;
-  padding: 0 32px;
-`
+  //padding: 0 32px;
+// `
 
 const Header = styled.header`
   background: var(--color-background);
-  height: 600px;
+  margin-top: 70px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 100vw;
+  max-width: 100%;
 
   @media screen and (min-width: ${theme`screens.lg`}) {
-    height: 100vh;
+    height: 100%;
   }
 `
 
@@ -149,7 +150,7 @@ const Meta = styled.div`
 const Article = styled.article`
   display: grid;
   width: 100%;
-  padding-bottom: 80px;
+  padding-bottom: 20px;
   grid-template-columns: 2rem 1fr 2rem;
   line-height: 1.6;
 
@@ -166,7 +167,7 @@ const Article = styled.article`
     margin-bottom: 48px;
 
     @media screen and (min-width: ${theme`screens.lg`}) {
-      margin-bottom: 96px;
+      //margin-bottom: 30px;
     }
   }
 
@@ -244,14 +245,14 @@ const Article = styled.article`
 `
 
 const Title = styled.h1`
-  ${tw`px-8 mx-auto mb-12 font-serif text-center lg:mb-24`}
-
-  font-size: 4rem;
+  ${tw`px-8 mx-auto font-serif text-center lg:mb-24`}
+  font-size: 3rem;
   line-height: 0.9;
   max-width: min(100vw, 14ch);
 
   @media screen and (min-width: ${theme`screens.md`}) {
-    font-size: clamp(5rem, 15vw, 8rem);
+    font-size: 4rem;
+    line-height: 4rem;
   }
 `
 

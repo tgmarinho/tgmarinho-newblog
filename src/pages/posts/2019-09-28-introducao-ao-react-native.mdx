@@ -713,7 +713,7 @@ Depois de instalar, basta criar um arquivo: `styles.js`:
 ```
 import styled from  'styled-components/native';
 
-export  const Container = styled.View``;
+export  const Layout = styled.View``;
 ```
 
 Mudou que agora temos que importar o `/native` e também não temos uma `div` e sim uma `View`.  Temos que usar as tags nativas do React Native.
@@ -806,7 +806,7 @@ Nele pego o usuário digitado e passo para a chamada a api do github, que retorn
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Keyboard } from 'react-native';
-import { Container, Form, Input, SubmitButton } from './styles';
+import { Layout, Form, Input, SubmitButton } from './styles';
 import api from '../../services/api';
 
 Icon.loadFont();
@@ -836,7 +836,7 @@ class Main extends Component {
     const { users, newUser } = this.state;
 
     return (
-      <Container>
+      <Layout>
         <Form>
           <Input
             autoCorrect={false}
@@ -851,7 +851,7 @@ class Main extends Component {
             <Icon name="add" size={20} color="#FFF" />
           </SubmitButton>
         </Form>
-      </Container>
+      </Layout>
     );
   }
 }
@@ -900,7 +900,7 @@ No mesmo componente do index.js da Main, importamos mais componentes de estiliza
 ```
 ...
 import {
-  Container,
+  Layout,
   Form,
   Input,
   SubmitButton,
@@ -1156,7 +1156,7 @@ static navigationOptions = ({navigation}) => ({
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-// import { Container } from './styles';
+// import { Layout } from './styles';
 import api from '../../services/api';
 
 export default class User extends Component {
@@ -1207,7 +1207,7 @@ Importo os novos componentes estilizados na `index.js` do User:
 
 ```
 import {
-  Container,
+  Layout,
   Header,
   Avatar,
   Name,
@@ -1230,7 +1230,7 @@ render() {
     const user = navigation.getParam('user');
 
     return (
-      <Container>
+      <Layout>
         <Header>
           <Avatar source={{ uri: user.avatar }} />
           <Name>{user.name}</Name>
@@ -1250,7 +1250,7 @@ render() {
             </Starred>
           )}
         />
-      </Container>
+      </Layout>
     );
   }
 ```

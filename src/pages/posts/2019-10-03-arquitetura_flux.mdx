@@ -606,14 +606,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdShoppingBasket } from 'react-icons/md';
 import { connect } from 'react-redux';
-import { Container, Cart } from './styles';
+import { Layout, Cart } from './styles';
 import logo from '../../assets/images/logo.svg';
 
 function Header({ cart }) {
   console.log(cart);
 
   return (
-    <Container>
+    <Layout>
       <Link to="/">
         <img src={logo} alt="Rocketshoes" />
       </Link>
@@ -625,7 +625,7 @@ function Header({ cart }) {
         </div>
         <MdShoppingBasket size={36} color="#FFF" />
       </Cart>
-    </Container>
+    </Layout>
   );
 }
 
@@ -782,11 +782,11 @@ import {
   MdAddCircleOutline,
   MdDelete,
 } from 'react-icons/md';
-import { Container, ProductTable, Total } from './styles';
+import { Layout, ProductTable, Total } from './styles';
 
 function Cart({ cart }) {
   return (
-    <Container>
+    <Layout>
       <ProductTable>
         <thead>
           <tr>
@@ -841,7 +841,7 @@ function Cart({ cart }) {
           <strong>R$ 1.920,28</strong>
         </Total>
       </footer>
-    </Container>
+    </Layout>
   );
 }
 
@@ -1108,7 +1108,7 @@ import {
   MdDelete,
 } from 'react-icons/md';
 import { bindActionCreators } from 'redux';
-import { Container, ProductTable, Total } from './styles';
+import { Layout, ProductTable, Total } from './styles';
 import * as CartActions from '../../store/models/cart/actions';
 
 function Cart({ cart, removeFromCart, updateAmount }) {
@@ -1120,7 +1120,7 @@ function Cart({ cart, removeFromCart, updateAmount }) {
   }
 
   return (
-    <Container>
+    <Layout>
       <ProductTable>
         <thead>
           <tr>
@@ -1187,7 +1187,7 @@ function Cart({ cart, removeFromCart, updateAmount }) {
           <strong>R$ 1.920,28</strong>
         </Total>
       </footer>
-    </Container>
+    </Layout>
   );
 }
 

@@ -1,13 +1,15 @@
 import tw, { styled } from 'twin.macro'
-
+import { Layout } from '@/components/Layout'
 import Navigation from '@/components/Navigation'
 import '@/styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
     <Main>
-      <TopNavigation tw="w-full p-8 pb-0 fixed top-0 z-50" />
+      <Layout>
+      <TopNavigation tw="flex justify-center p-8 pb-4 fixed top-0 z-50" />
       <Component {...pageProps} />
+      </Layout>
     </Main>
   )
 }
@@ -17,7 +19,7 @@ export default MyApp
 // --
 
 const Main = styled.main`
-  ${tw`min-h-screen antialiased`}
+  ${tw`min-h-screen  antialiased`}
 
   --white: hsl(60, 100%, 100%);
   --navy: hsl(262, 49%, 14%);
@@ -81,5 +83,7 @@ const Main = styled.main`
 `
 
 const TopNavigation = styled(Navigation)`
+  align-self: center;
+  width:  670px;
   background: var(--color-background);
 `

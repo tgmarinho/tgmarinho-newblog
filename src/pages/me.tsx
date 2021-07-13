@@ -17,6 +17,7 @@ import { Post } from '@/components/Post'
 import { Divider } from '@/components/Divider'
 import SEO from '@/components/SEO'
 import SocialLinks from '@/components/SocialLinks'
+import { Layout } from '@/components/Layout'
 
 export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
   const posts = getAllPosts('post')
@@ -36,55 +37,36 @@ export default function HomePage({ posts }) {
       <Head>
         <title>Hey I'm here!</title>
       </Head>
-      <div tw="py-32">
+      <div tw="py-14">
         <Header />
         <SEO />
         {/* <div onClick={() => router.push('search')}>
           <Search />
         </div> */}
-        <p>
-          Sou formado em Ciência da Computação pela Uniderp/Campo Grande-MS,
-          atualmente Anhanguera (2013).
-        </p>
-
-        <p>
-          Sou especialista em Engenharia de Software pala Estácio de Sá (2015).
-        </p>
-
-        <p>Sou muito bem casado e feliz com minha esposa, amo minha família.</p>
-
-        <p>
-          No meu tempo livre, faço academia, gosto de caminhar, assitir um
-          Netflix, compartilhar conhecimento através de blog ou vídeo e até
-          mesmo presencial.
-        </p>
-
-        <h2>Habilidades</h2>
-
-        <p>
-          Em tantos anos de carreira como <i>Full Stack Informática</i>, desde
-          os 10 anos de idade aprendendo e tals, tive contato com muita
-          tecnologia e diversas áreas da TI (design com Corel, Photoshop,
-          Fireworks, manutenção de computadores, redes, etc), mas foi da área de
-          desenvolvimento de software que mas gostei, já trabalhei com:
-        </p>
-
-        <h2>Foco</h2>
-
-        <p>
-          Hoje estou focado no desenvolvimento Web/Mobile Full Stack com
-          Javascript Node, React, React Native e todo ecossistema por volta
-          dessas tecnologias.
-        </p>
-
-        <h2>Contato</h2>
-
-        <p>
-          Você pode entrar em contato comigo através de qualquer uma das minhas
-          redes sociais.
-        </p>
-
-        <SocialLinks />
+        <Layout>
+        <figure className="rounded-xl">
+          <img className="w-32 h-32 rounded-full mx-auto" src="/tgmarinho.jpg" alt="" width="384" height="512" />
+            <div className="pt-6 text-center space-y-4">
+              <blockquote>
+                <p className="text-lg font-semibold">
+                  I'm a passionate software engineer working with Javascript, React and React
+                  Native with all ecosystems involved.
+                  I regard myself as a cutting-edge tech early adopter, an openminded and tuned in to the newest tools releases professional.
+                  I will be here writing about what I've been learning and coding, sometimes I'll share some thoughts about life.
+                </p>
+              </blockquote>
+              <figcaption className="font-medium">
+                <div className="text-cyan-600">
+                  Thiago Marinho
+                </div>
+                <div className="text-gray-500">
+                  Software Engineer, Fullstack
+                </div>
+              </figcaption>
+            </div>
+            <SocialLinks />
+          </figure>
+        </Layout>
       </div>
     </>
   )

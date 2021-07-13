@@ -16,6 +16,7 @@ import { Post } from '@/components/Post'
 
 import { Divider } from '@/components/Divider'
 import SEO from '@/components/SEO'
+import Navigation from '@/components/Navigation'
 
 export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
   const posts = getAllPosts('post')
@@ -35,7 +36,8 @@ export default function HomePage({ posts }) {
       <Head>
         <title>@tgmarinho</title>
       </Head>
-      <div tw="py-32">
+      <div tw="py-14">
+
         <Header />
         <SEO />
         {/* <div onClick={() => router.push('search')}>

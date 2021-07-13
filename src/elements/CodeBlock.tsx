@@ -74,16 +74,19 @@ function getLineNumbers(highlight) {
       if (!highlight.length) {
         return false
       }
-      return numbers.includes(lineNumber)
+      return
+
+      numbers.includes(lineNumber)
     },
   }
 }
 
 const StyledBlock = styled.pre`
-  background: var(--code-background);
-  border: 2px solid var(--code-border-color, black);
-  color: var(--code-text-color);
+  background: #4C3D40;
+  border: 2px solid cornflowerblue;
+  color: white;
   padding: var(--space, 24px);
+  font-family: "JetBrains Mono", monospace;
 `
 
 const Line = styled.div`

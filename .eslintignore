@@ -6,3 +6,5 @@ next.config.js
 .next/
 public/sw.js
 public/workbox-79663c73.js
+
+.idea/

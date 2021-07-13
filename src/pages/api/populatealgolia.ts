@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   try {
     if (SECRET === secret) {
-      await PupuleAlgolia()
+      await PupulateAlgolia()
       return res.status(200).json({ success: 'ok - finished' })
     } else {
       throw new Error('Go away, sho sho sho!')
@@ -59,7 +59,7 @@ const getAllPosts = () => {
   )
 }
 
-async function PupuleAlgolia() {
+async function PupulateAlgolia() {
   const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID
   const adminApiKey = process.env.ALGOLIA_ADMIN_KEY
   const indexName = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME

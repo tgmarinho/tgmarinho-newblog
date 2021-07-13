@@ -415,7 +415,7 @@ styles.js:
 ```
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Layout = styled.div`
   max-width: 700px;
   background: #fff;
   border-radius: 4px;
@@ -471,10 +471,10 @@ import React from 'react';
 
 import { FaGithubAlt, FaPlus } from 'react-icons/fa';
 
-import { Container, Form, SubmitButton } from './styles';
+import { Layout, Form, SubmitButton } from './styles';
 
 const Main = () => (
-  <Container>
+  <Layout>
     <h1>
       <FaGithubAlt />
       Repositórios
@@ -487,7 +487,7 @@ const Main = () => (
         <FaPlus color="#FFF" size={14} />
       </SubmitButton>
     </Form>
-  </Container>
+  </Layout>
 );
 
 export default Main;
