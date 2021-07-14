@@ -36,19 +36,10 @@ export default function HomePage({ posts }) {
       <Head>
         <title>@tgmarinho</title>
       </Head>
-      <div tw="py-14">
-
+      <div tw="pt-16">
         <Header />
         <SEO />
-        {/* <div onClick={() => router.push('search')}>
-          <Search />
-        </div> */}
-        <Posts>
-          <Divider />
-          {posts.map((post: PostMeta) => (
-            <Post key={post.slug} content={post} />
-          ))}
-        </Posts>
+        <Search />
       </div>
     </>
   )

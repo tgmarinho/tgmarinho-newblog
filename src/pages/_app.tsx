@@ -7,8 +7,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <Main>
       <Layout>
-      <TopNavigation tw="flex justify-center p-8 pb-4 fixed top-0 z-50" />
-      <Component {...pageProps} />
+        <TopNavigation tw="flex justify-center p-8 pb-4 fixed top-0 z-50" />
+        <Component {...pageProps} />
       </Layout>
     </Main>
   )
@@ -84,6 +84,6 @@ const Main = styled.main`
 
 const TopNavigation = styled(Navigation)`
   align-self: center;
-  width:  670px;
+  width: 670px;
   background: var(--color-background);
 `

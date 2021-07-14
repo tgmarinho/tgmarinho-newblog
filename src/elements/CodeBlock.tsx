@@ -82,11 +82,11 @@ function getLineNumbers(highlight) {
 }
 
 const StyledBlock = styled.pre`
-  background: #4C3D40;
-  border: 2px solid cornflowerblue;
+  background: rgb(44,38,63);
+  background: linear-gradient(157deg, rgba(44,38,63,1) 0%, rgba(58,48,62,0.9992560257294952) 100%);
   color: white;
   padding: var(--space, 24px);
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
 `
 
 const Line = styled.div`

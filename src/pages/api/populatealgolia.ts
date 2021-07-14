@@ -4,6 +4,8 @@ const fs = require('fs')
 const glob = require('glob')
 const matter = require('gray-matter')
 const path = require('path')
+const readingTime = require('reading-time')
+// https://tgmarinho.com/api/populatealgolia?secret=12345
 
 export default async function handler(req, res) {
   const SECRET = process.env.NEXT_ALGOLIA_POPULATE_PASSWD
@@ -17,7 +19,7 @@ export default async function handler(req, res) {
       throw new Error('Go away, sho sho sho!')
     }
   } catch (error) {
-    return res.status(500).json({ error: error.message })
+    return res.status(401).json({ error: error.message })
   }
 }
 
@@ -36,14 +38,22 @@ const getAllPosts = () => {
       .map((filePath) => {
         // Get the content of the file
         const source = fs.readFileSync(path.join(filePath), 'utf8')
-
         // Get the file name without .mdx
         const slug = path.basename(filePath).replace('.mdx', '')
         // Use gray-matter to extract the post meta from post content
         const data = matter(source).data
 
+        // stats: {
+        //   text: '1 min read',
+        //   minutes: 1,
+        //   time: 60000,
+        //   words: 200
+        // }
+        const stats = readingTime(source)
+
         return {
           ...data,
+          readingTime: Math.round(stats.minutes),
           slug,
         }
       })
@@ -69,12 +79,17 @@ async function PupulateAlgolia() {
 
   const allPosts = getAllPosts()
 
-  const objects = allPosts.map(({ title, description, category, slug }) => ({
-    objectID: slug,
-    title,
-    description,
-    category,
-  }))
+  const objects = allPosts.map(
+    ({ title, description, category, slug, image, publishedAt, readingTime }) => ({
+      objectID: slug,
+      title,
+      description,
+      category,
+      publishedAt,
+      readingTime,
+      image: `https://tgmarinho.com/${image}`,
+    })
+  )
 
   await index
     .saveObjects(objects)

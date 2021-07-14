@@ -1,7 +1,7 @@
 import tw, { styled } from 'twin.macro'
 
 export const Posts = styled.ul`
-  ${tw`pt-16 space-y-4`}
+  ${tw`pt-2 space-y-2`}
   display: grid;
   grid-template-columns: 1fr min(85ch, 100%) 1fr;
   position: relative;

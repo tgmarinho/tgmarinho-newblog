@@ -122,7 +122,8 @@ const Blurb = styled.p`
 
   text-align: center;
   //padding: 0 32px;
-// `
+  //
+`
 
 const Header = styled.header`
   background: var(--color-background);
