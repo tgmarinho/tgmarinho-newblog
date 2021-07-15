@@ -1,6 +1,6 @@
 import 'twin.macro'
 import { Title } from '@/components/Title'
-import Link from 'next/link';
+import Link from 'next/link'
 
 export const Header = () => (
   <header className="mx-auto mt-12 mb-4 space-y-16">

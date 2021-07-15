@@ -3,7 +3,13 @@ import { HiArrowRight } from 'react-icons/hi'
 import 'twin.macro'
 
 export const Post = (props) => {
-  const { objectID: slug, title, description, publishedAt, readingTime } = props.content
+  const {
+    objectID: slug,
+    title,
+    description,
+    publishedAt,
+    readingTime,
+  } = props.content
   return (
     <li key={slug} tw="px-8 py-6 hover:bg-gray-200 rounded-xl">
       <Link href={`posts/${slug}`}>
@@ -20,9 +26,7 @@ export const Post = (props) => {
                   day: 'numeric',
                 }).format(new Date(publishedAt))}
               </p>
-              <p tw="text-sm text-gray-600">
-                {`${readingTime} min read`}
-              </p>
+              <p tw="text-sm text-gray-600">{`${readingTime} min read`}</p>
             </div>
           </div>
           <p tw="text-2xl text-gray-600">

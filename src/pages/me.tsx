@@ -13,7 +13,7 @@ import { Posts } from '@/components/Posts'
 import { Title } from '@/components/Title'
 import { Header } from '@/components/Header'
 import { Post } from '@/components/Post'
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
 
 import { Divider } from '@/components/Divider'
 import SEO from '@/components/SEO'
@@ -54,23 +54,45 @@ export default function HomePage({ posts }) {
               height="512"
             />
             <div className="pt-6 px-8 space-y-4">
-              <RoughNotationGroup  show={true}>
-              <blockquote>
-                <p className="text-lg lg:text-center md:text-justify font-medium">
-                  I'm a   <RoughNotation color="red" type="circle">passionate</RoughNotation> software engineer working with Javascript,
-                  React and React Native with all ecosystems involved. I regard
-                  myself as a cutting-edge tech early adopter, an openminded and
-                  tuned in to the newest tools releases professional. I will be
-                    here <RoughNotation color="red" type="underline">writing</RoughNotation> about what I've been <RoughNotation color="yellow" type="highlight">learning</RoughNotation> and <RoughNotation color="yellow" type="highlight">coding</RoughNotation>,
-                  sometimes I'll share some thoughts about <RoughNotation color="red" type="underline">life</RoughNotation>.
-                </p>
-              </blockquote>
-              <figcaption className="font-medium text-center">
-                <div className="text-cyan-600 2xl:font-bold">Thiago Marinho</div>
-                <div className="text-gray-500">
-                  <RoughNotation color="blue" type="underline">Software Engineer, Fullstack</RoughNotation>
-                </div>
-              </figcaption>
+              <RoughNotationGroup show={true}>
+                <blockquote>
+                  <p className="text-lg lg:text-center md:text-justify font-medium">
+                    I'm a{' '}
+                    <RoughNotation color="red" type="circle">
+                      passionate
+                    </RoughNotation>{' '}
+                    software engineer working with Javascript, React and React
+                    Native with all ecosystems involved. I regard myself as a
+                    cutting-edge tech early adopter, an openminded and tuned in
+                    to the newest tools releases professional. I will be here{' '}
+                    <RoughNotation color="red" type="underline">
+                      writing
+                    </RoughNotation>{' '}
+                    about what I've been{' '}
+                    <RoughNotation color="yellow" type="highlight">
+                      learning
+                    </RoughNotation>{' '}
+                    and{' '}
+                    <RoughNotation color="yellow" type="highlight">
+                      coding
+                    </RoughNotation>
+                    , sometimes I'll share some thoughts about{' '}
+                    <RoughNotation color="red" type="underline">
+                      life
+                    </RoughNotation>
+                    .
+                  </p>
+                </blockquote>
+                <figcaption className="font-medium text-center">
+                  <div className="text-cyan-600 2xl:font-bold">
+                    Thiago Marinho
+                  </div>
+                  <div className="text-gray-500">
+                    <RoughNotation color="blue" type="underline">
+                      Software Engineer, Fullstack
+                    </RoughNotation>
+                  </div>
+                </figcaption>
               </RoughNotationGroup>
             </div>
             <SocialLinks />

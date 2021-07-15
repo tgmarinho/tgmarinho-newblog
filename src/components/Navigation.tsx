@@ -5,7 +5,6 @@ import {
   FaLinkedin,
   FaYoutube,
   FaTrademark,
-  FaSearch,
 } from 'react-icons/fa'
 import 'twin.macro'
 

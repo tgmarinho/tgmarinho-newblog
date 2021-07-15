@@ -80,7 +80,15 @@ async function PupulateAlgolia() {
   const allPosts = getAllPosts()
 
   const objects = allPosts.map(
-    ({ title, description, category, slug, image, publishedAt, readingTime }) => ({
+    ({
+      title,
+      description,
+      category,
+      slug,
+      image,
+      publishedAt,
+      readingTime,
+    }) => ({
       objectID: slug,
       title,
       description,
