@@ -9,4 +9,7 @@ module.exports = withMdxEnhanced({
   target: 'serverless',
   webpack5: false, // for dev envoriment
   cleanDistDir: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 })
