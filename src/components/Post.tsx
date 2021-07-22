@@ -1,8 +1,11 @@
 import Link from 'next/link'
-import { HiArrowRight } from 'react-icons/hi'
+import { useEffect, useState } from 'react'
+import { HiArrowRight, HiOutlineEye } from 'react-icons/hi'
 import 'twin.macro'
 
 export const Post = (props) => {
+  const [counter, setCounter] = useState<string | number>('...')
+
   const {
     objectID: slug,
     title,
@@ -10,8 +13,36 @@ export const Post = (props) => {
     publishedAt,
     readingTime,
   } = props.content
+
+  useEffect(() => {
+    getCounterByPostView(slug)
+  }, [slug])
+
+  const updateCounterByPostView = async (url) => {
+    console.log('countView', url)
+    const response = await fetch(`/api/page-views?slug=${url}`, {
+      method: 'PUT',
+    })
+    console.log('finalizei', response)
+  }
+
+  const getCounterByPostView = async (url) => {
+    console.log('countView', url)
+    const response = await fetch(`/api/page-views?slug=${url}`, {
+      method: 'GET',
+    })
+    const data = await response.json()
+    setCounter(data.counter)
+    console.log('finalizei', data)
+  }
+
   return (
-    <li key={slug} tw="px-8 py-6 hover:bg-gray-200 rounded-xl">
+    <li
+      key={slug}
+      tw="px-8 py-6 hover:bg-gray-200 rounded-xl"
+      aria-hidden="true"
+      onClick={() => updateCounterByPostView(slug)}
+    >
       <Link href={`posts/${slug}`}>
         <a tw="flex items-center justify-between cursor-pointer space-x-8">
           <div tw="space-y-4 w-full">
@@ -26,7 +57,13 @@ export const Post = (props) => {
                   day: 'numeric',
                 }).format(new Date(publishedAt))}
               </p>
-              <p tw="text-sm text-gray-600">{`${readingTime} min read`}</p>
+              <div tw="flex justify-between items-center">
+                <p tw="text-sm mr-1 text-gray-600">{`${readingTime} min read •`}</p>
+                <div tw="flex justify-between items-center">
+                  <p tw="text-sm mr-1 text-gray-600">{`${counter}`}</p>{' '}
+                  <HiOutlineEye color="gray" />
+                </div>
+              </div>
             </div>
           </div>
           <p tw="text-2xl text-gray-600">

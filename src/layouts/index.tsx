@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import tw, { styled, theme } from 'twin.macro'
 import { MDXProvider } from '@mdx-js/react'
-
+import Link from 'next/link'
 import FeedbackForm from '@/components/FeedbackForm'
 import NewsletterForm from '@/components/NewsletterForm'
 import Navigation from '@/components/Navigation'
@@ -17,7 +17,7 @@ import OrderedList from '@/elements/OrderedList'
 import Heading from '@/elements/Heading'
 import Subheading from '@/elements/Subheading'
 import ProblemStatement from '@/elements/ProblemStatement'
-
+import Clap from '@/elements/Clap'
 import { formatPath } from '@/lib/utils'
 
 const formatter = new Intl.DateTimeFormat('en-US', {
@@ -75,17 +75,22 @@ export default function Layout({ frontMatter, children }: Props) {
         </Head>
         <Header>
           <Title>{frontMatter?.title}</Title>
-          <Blurb>{frontMatter?.blurb}</Blurb>
         </Header>
         <Meta>
-          <Author>
-            <Avatar src="/tgmarinho.jpg" alt="Thiago Marinho" />
-            <p>Thiago Marinho</p>
-          </Author>
+          <Link href="/me">
+            <a href="#">
+              <Author>
+                <Avatar src="/tgmarinho.jpg" alt="Thiago Marinho" />
+                <p>Thiago Marinho</p>
+              </Author>
+            </a>
+          </Link>
           <p>
             Last updated {formatter.format(new Date(frontMatter?.publishedAt))}
           </p>
         </Meta>
+
+        <Clap />
         {children}
         <FormContainer>
           <FeedbackForm slug={slug} />

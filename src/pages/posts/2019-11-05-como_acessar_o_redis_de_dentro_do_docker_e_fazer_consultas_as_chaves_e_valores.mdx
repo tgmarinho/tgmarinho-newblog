@@ -2,12 +2,13 @@
 title: Como acessar o Redis de dentro do Docker e fazer consultas
 description: >-
   Vamos conectar com a instância do Redis que está rodando no Docker e consultar
-  as chaves para obter seus respectivos valores 
+  as chaves para obter seus respectivos valores
 publishedAt: '2019-11-05'
 image: /assets/img/redis.png
 category: dev
 background: '#EB7728'
 ---
+
 ## **Conceito**
 
 O [Redis](https://redis.io/) é um armazenamento de estrutura de dados de chave-valor de código aberto e na memória. O Redis oferece um conjunto de estruturas versáteis de dados na memória que permite a fácil criação de várias aplicações personalizadas. Os principais casos de uso do Redis incluem cache, gerenciamento de sessões, PUB/SUB e classificações. É o armazenamento de chave-valor mais conhecido atualmente. Ele tem a licença BSD, é escrito em código C otimizado e é compatível com várias linguagens de desenvolvimento. Redis é um acrônimo de **RE**mote **DI**ctionary **S**erver (servidor de dicionário remoto). ([Fonte](https://aws.amazon.com/pt/elasticache/what-is-redis/)).
@@ -21,7 +22,7 @@ Na internet tem artigos ensinando a instalar com o Docker. Então depois que ins
 Acessando o Redis do docker:
 
 ```
-docker exec -it redisbarber sh 
+docker exec -it redisbarber sh
 ```
 
 Pronto agora só eu entrar no CLI do Redis digitando **redis-cli**:
@@ -59,11 +60,11 @@ Se eu quiser pegar uma chave específica só digitar KEYS "**nome da chave**":
 E para pegar o valor da chave:
 
 ```
-127.0.0.1:6379> MGET key "cache:providers" 
+127.0.0.1:6379> MGET key "cache:providers"
 ```
 
 1. (nil)
-2. "\[{"id":7,"name":"Augusto Cezar","email":"amarinho@gmail.com","avatar_id":1,"avatar":{"url":"http://localhost:3333/files/a3fcd73a5ea2a69d1add2a47d6ba2c15.png","name":"code-hoc.png","path":"a3fcd73a5ea2a69d1add2a47d6ba2c15.png"}},{"id":8,"name":"Pedro Presta","email":"ppresta@gmail.com","avatar_id":2,"avatar":{"url":"http://localhost:3333/files/667a48e3b15165456142ece1a98b276d.png","name":"code-hoc.png","path":"667a48e3b15165456142ece1a98b276d.png"}},{"id":10,"name":"Thiago Marinho","email":"avatar@gmail.com","avatar_id":19,"avatar":{"url":"http://localhost:3333/files/0b5e3ebfee40c3f96d63ae3368deb846.jpg","name":"tgprofile.jpg","path":"0b5e3ebfee40c3f96d63ae3368deb846.jpg"}}}] .... _mais e mais valores q estou omitindo aqui_"
+2. "\[{"id":7,"name":"Augusto Cezar","email":"amarinho@gmail.com","avatar*id":1,"avatar":{"url":"http://localhost:3333/files/a3fcd73a5ea2a69d1add2a47d6ba2c15.png","name":"code-hoc.png","path":"a3fcd73a5ea2a69d1add2a47d6ba2c15.png"}},{"id":8,"name":"Pedro Presta","email":"ppresta@gmail.com","avatar_id":2,"avatar":{"url":"http://localhost:3333/files/667a48e3b15165456142ece1a98b276d.png","name":"code-hoc.png","path":"667a48e3b15165456142ece1a98b276d.png"}},{"id":10,"name":"Thiago Marinho","email":"avatar@gmail.com","avatar_id":19,"avatar":{"url":"http://localhost:3333/files/0b5e3ebfee40c3f96d63ae3368deb846.jpg","name":"tgprofile.jpg","path":"0b5e3ebfee40c3f96d63ae3368deb846.jpg"}}}] .... \_mais e mais valores q estou omitindo aqui*"
    127.0.0.1:6379>
 
 _Trouxe um array com vários objetos, para fins de curiosidade ele é o cache de uma consulta que tenho do banco de dados que traz os meus fornecedores. Se quiser um post sobre como lidar com cache no Node usando Redis deixa no comentário: Posta sobre cache com Nodes + Redis._
@@ -71,7 +72,7 @@ _Trouxe um array com vários objetos, para fins de curiosidade ele é o cache de
 Então resumindo os comandos são:
 
 ```
-docker exec -it redisbarber sh 
+docker exec -it redisbarber sh
 ```
 
 ```
@@ -91,3 +92,21 @@ MGET key "cache:providers"
 ```
 
 Valeu =)
+
+<section
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <br />
+  <a
+    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+    className="twitter-share-button"
+    data-show-count="false"
+  >
+    Tweet
+  </a>
+</section>

@@ -2,10 +2,18 @@ import tw, { styled } from 'twin.macro'
 import { Layout } from '@/components/Layout'
 import Navigation from '@/components/Navigation'
 import '@/styles/globals.css'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
   return (
     <Main>
+      <Head>
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charSet="utf-8"
+        ></script>
+      </Head>
       <Layout>
         <TopNavigation tw="flex justify-center p-8 pb-4 fixed top-0 z-50" />
         <Component {...pageProps} />

@@ -14,7 +14,6 @@ import { Title } from '@/components/Title'
 import { Header } from '@/components/Header'
 import { Post } from '@/components/Post'
 import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
-
 import { Divider } from '@/components/Divider'
 import SEO from '@/components/SEO'
 import SocialLinks from '@/components/SocialLinks'
@@ -49,7 +48,7 @@ export default function HomePage({ posts }) {
             <img
               className="w-32 h-32 mt-8 rounded-full mx-auto"
               src="/tgmarinho.jpg"
-              alt=""
+              alt="Thiago Marinho"
               width="384"
               height="512"
             />

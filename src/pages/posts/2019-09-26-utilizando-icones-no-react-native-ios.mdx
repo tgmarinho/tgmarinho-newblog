@@ -8,6 +8,7 @@ image: /assets/img/react-native.png
 category: mobile
 background: '#03A9F4'
 ---
+
 Para utilizar ícones no React Native temos que instalar a lib:
 
 ```
@@ -16,7 +17,7 @@ yarn add react-native-vector-icons
 
 Ela vem com vários ícones legais do MaterialIcons, Font Awesome, etc... pra ver todos [clique aqui](https://oblador.github.io/react-native-vector-icons/).
 
-E com a versão do RN q estou utilizando`"react-native":  "0.61.1",` (Fast Reload \o/)
+E com a versão do RN q estou utilizando`"react-native": "0.61.1",` (Fast Reload \o/)
 
 **Não precisamos** mais fazer:
 
@@ -33,9 +34,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 Icon.loadFont();
 ```
 
-Sim, esse `Icon.loadFont()` é obrigatório, se você trocar o MaterialIcons por outra fonte por exemplo:  FontAwesome, esse loadFont() tem que ser chamado novamente, ou seja, é melhor deixar ele no código mesmo que você já tenha executado ele uma vez com uma outra fonte. Interessante colocar essa configuração em um arquivo de configuração, por exemplo: `loadFonts.js`.
+Sim, esse `Icon.loadFont()` é obrigatório, se você trocar o MaterialIcons por outra fonte por exemplo: FontAwesome, esse loadFont() tem que ser chamado novamente, ou seja, é melhor deixar ele no código mesmo que você já tenha executado ele uma vez com uma outra fonte. Interessante colocar essa configuração em um arquivo de configuração, por exemplo: `loadFonts.js`.
 
-Agora só aplicar o `Icon` no seu código: 
+Agora só aplicar o `Icon` no seu código:
 
 ```
 ...
@@ -53,5 +54,22 @@ Fonte: https://github.com/oblador/react-native-vector-icons
 
 Kudos para Hugo Duarte e William Amorim que deram uma força!
 
+[Imagem do Post](https://medium.com/react-native-training/best-practices-for-creating-react-native-apps-part-1-66311c746df3)
 
-[Imagem do Post](https://medium.com/react-native-training/best-practices-for-creating-react-native-apps-part-1-66311c746df3) 
+<section
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <br />
+  <a
+    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+    className="twitter-share-button"
+    data-show-count="false"
+  >
+    Tweet
+  </a>
+</section>

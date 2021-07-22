@@ -8,17 +8,19 @@ image: /assets/img/roadway-path-montain.jpg
 category: dev
 background: '#EB7728'
 ---
+
 Existem três tipos de parâmetros, dois deles utilizados no método GET e um no método POST.
 
-* Query Params
-* Route Params
-* Body Params
+- Query Params
+- Route Params
+- Body Params
 
 ### Query & Route Params
 
 [Query params](https://en.wikipedia.org/wiki/Query_string) recebe os dados da requisição como parâmetro na URL, pode conter 1 ou mais parâmetros.
 
-Exemplo: 
+Exemplo:
+
 ```
 http://minhaapi.com/movies?name=transformes&duration=2&actor=octimusprime
 ```
@@ -26,20 +28,20 @@ http://minhaapi.com/movies?name=transformes&duration=2&actor=octimusprime
 _**Route params**_ recebe os dados da requisição na rota, é a melhor maneira para buscar algo, deletar ou atualizar por ID, por exemplo:
 
 ```
-GET http://minhaapi.com/movies/1 
+GET http://minhaapi.com/movies/1
 ```
 
 ```
-DELETE http://minhaapi.com/movies/1 
+DELETE http://minhaapi.com/movies/1
 ```
 
 ```
-PUT http://minhaapi.com/movies/1 
+PUT http://minhaapi.com/movies/1
 ```
 
 Nesse exemplo acima busca, delete e atualiza o filme com ID 1.
 
-Ambos mudam a forma de escrever o código, veja: 
+Ambos mudam a forma de escrever o código, veja:
 
 ```
 /**
@@ -48,7 +50,7 @@ Ambos mudam a forma de escrever o código, veja:
 * Route params = /users/1
 * Request Body = { "name": "Thiago" }
 */
-  
+
 // Query params = ?name=thiago
 // fazer a requisição no navegador: http://localhost:3333/users/?name=Thiago
 server.get("/users", (req, res) => {
@@ -98,9 +100,24 @@ Quando surgir a dúvida de qual é qual, basta voltar aqui no post.
 
 Resumindo:
 
-Query Param: vc vai usar ```?name=thiago&lastname=oliveira```
+Query Param: vc vai usar `?name=thiago&lastname=oliveira`
 
-Route Param: vc vai usar ```/users/1```
+Route Param: vc vai usar `/users/1`
 
-
-
+<section
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <br />
+  <a
+    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+    className="twitter-share-button"
+    data-show-count="false"
+  >
+    Tweet
+  </a>
+</section>

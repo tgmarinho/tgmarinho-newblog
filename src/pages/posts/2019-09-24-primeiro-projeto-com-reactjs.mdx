@@ -29,6 +29,7 @@ Toda configuração fica no `react-scripts` que pode ser localizado no `package.
 Eu vou deletar a configuração do eslint padrão pois irei configurar por conta.
 
 Deletar essa configuração:
+
 ```
 "eslintConfig": {
 	"extends":  "react-app"
@@ -47,10 +48,9 @@ O projeto vem com alguns arquivos por padrão inclusive com arquivos para fazer 
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula01-criando-projeto-do-zero](https://github.com/tgmarinho/front-react/tree/aula01-criando-projeto-do-zero)
 
-
 ## Aula 02 - ESLint, Prettier e EditorConfig
 
-Vamos configurar as ferramentas ESLint, Prettier e EditorConfig para manter uma *style guide* no projeto.
+Vamos configurar as ferramentas ESLint, Prettier e EditorConfig para manter uma _style guide_ no projeto.
 
 ### Editor Config
 
@@ -88,9 +88,9 @@ yarn eslint --init
 Opções:
 
 ```
-❯ To check syntax, find problems, and enforce code style 
+❯ To check syntax, find problems, and enforce code style
 
-❯ JavaScript modules (import/export) 
+❯ JavaScript modules (import/export)
 
 ❯ React
 
@@ -98,9 +98,9 @@ Opções:
 
 ❯ Browser
 
-❯ Use a popular style guide 
+❯ Use a popular style guide
 
-❯ Airbnb (https://github.com/airbnb/javascript) 
+❯ Airbnb (https://github.com/airbnb/javascript)
 
 ❯ JavaScript
 
@@ -182,7 +182,6 @@ Para deixar o código seguindo as normas da style-guide.
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula02-eslint-prettier-editorconfig](https://github.com/tgmarinho/front-react/tree/aula02-eslint-prettier-editorconfig)
 
-
 ## Aula 03 - Roteamento no React
 
 Estamos criando um SPA, e as nossas páginas terão uma navegação, porém não teremos um refresh na tela quando mudarmos de página, isso será instantâneo, o usuário chama outra rota, muda a página, faz requisição no servidor e página é exibida e a tela nem pisca!
@@ -199,14 +198,14 @@ Criamos também uma pasta `pages` que conterá a pasta `Main` com um arquivo cha
 
 O conteúdo do arquivo vai estar no link do github.
 
-Dentro do routes.js vamos importar o BrowserRouter da lib react-router-dom, 
+Dentro do routes.js vamos importar o BrowserRouter da lib react-router-dom,
 BrowserRouter é responsável por permitir criar uma navegação entre rotas e atualizar a barra de endereços.
 
 ** BrowserRouter **: Deve englobar todas as rotas
 
 o ** Switch ** é usado para controlar que apenas uma rota seja chamada por momento.
 
-No ** react-router-dom  ** é possível chamar mais de uma rota pro vez.
+No ** react-router-dom ** é possível chamar mais de uma rota pro vez.
 
 ** Route ** é a cada rota da aplicação.
 
@@ -256,7 +255,7 @@ Só conseguimos acessar a rota / que redireciona para o componente Main.
 
 Quando tentamos acessar /repository é redirecionado para o componente Main, também!
 
-Isso ocorre porque o react-router-dom não vê se o path é igual ao path da routa, mas ele  verifica o começo, se começa com '/' ele já envia para a primeira rota que tenha o '/'. E como ambas tem o '/' e a primeira rota leva para a Main, então sempre a aplicação será redirecionada para a Main.
+Isso ocorre porque o react-router-dom não vê se o path é igual ao path da routa, mas ele verifica o começo, se começa com '/' ele já envia para a primeira rota que tenha o '/'. E como ambas tem o '/' e a primeira rota leva para a Main, então sempre a aplicação será redirecionada para a Main.
 
 Para verificar por igualdade nas rotas, basta usar a propriedade `exact`.
 
@@ -279,10 +278,9 @@ export default function Routes() {
 }
 ```
 
-Agora sim as duas páginas estão sendo renderizadas! 
+Agora sim as duas páginas estão sendo renderizadas!
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula03-roteamento-no-react](https://github.com/tgmarinho/front-react/tree/aula03-roteamento-no-react)
-
 
 ## Aula 04 - Styled Components
 
@@ -304,7 +302,8 @@ Legal que o styled-components permite o encadeamento de CSS também. E o estilo 
 
 Podemos também acessar as propriedades dos componentes no CSS.
 
-Criamos o arquivo `styles.js`  na pasta `Main`.
+Criamos o arquivo `styles.js` na pasta `Main`.
+
 ```
 import styled from 'styled-components';
 
@@ -319,6 +318,7 @@ export const Title = styled.h1`
   }
 `;
 ```
+
 Agora criaremos componentes estilizados.
 
 Vamos aplicar no Main/index.js:
@@ -340,10 +340,9 @@ export default Main;
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula04-styled-components](https://github.com/tgmarinho/front-react/tree/aula04-styled-components)
 
-
 ## Aula 05 - Estilos Globais
 
-Sabendo que o estilo de cada componente é local, no  styled componentes temos uma funcionalidade muito legal que são os estilos globais, onde podemos aplicar para todo o restado aplicação.
+Sabendo que o estilo de cada componente é local, no styled componentes temos uma funcionalidade muito legal que são os estilos globais, onde podemos aplicar para todo o restado aplicação.
 
 Para isso eu crio uma pasta styles com o arquivo global.js dentro da nova pasta.
 
@@ -393,8 +392,6 @@ export default App;
 ```
 
 Pronto, agora a aplicação já recebe a estilização global.
-
-
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula05-estilos-globais](https://github.com/tgmarinho/front-react/tree/aula05-estilos-globais)
 
@@ -492,14 +489,17 @@ const Main = () => (
 
 export default Main;
 ```
+
 Detalhe que no styled-components não precisamos passar os atributos básicos dos componentes diretamente no componente, podemos colocar direto na estilização:
 
-Não precisamos fazer: 
+Não precisamos fazer:
 
 ```
 <SubmitButton type="submit">
 ```
-Mas podemos fazer assim: 
+
+Mas podemos fazer assim:
+
 ```
 ...
  <SubmitButton>
@@ -517,7 +517,6 @@ O que deixa o componete mais limpo. E mais pra frente veremos que isso fica mais
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula06-estilizando-pagina-main](https://github.com/tgmarinho/front-react/tree/aula06-estilizando-pagina-main)
 
-
 ## Aula 07 - Adicionando repositórios
 
 Quando o usuário digitar o nome de usuário válido, vamos buscar o repositório e salvar no estado.
@@ -527,6 +526,7 @@ Instalamos a lib axios para fazer requisição a API externa.
 ```
 yarn add axios
 ```
+
 E agora podemos configurar um baseURL para fazer requisições passando apenas a rota e os parâmetros de consulta da API.
 
 Crio a pasta `services` dentro da `src` e o arquivo `api.js` dentro da nova pasta, com o conteúdo.
@@ -567,45 +567,50 @@ E no método handleSubmit da Main.js, quando o usuário salvar o formulário, pe
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula07-add-repositorios](https://github.com/tgmarinho/front-react/tree/aula07-add-repositorios)
 
-
 ## Aula 08 - Listando repositórios
-
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula08-listando-repositorios](https://github.com/tgmarinho/front-react/tree/aula08-listando-repositorios)
 
-## Aula 09 - Utilizando LocalStorage 
+## Aula 09 - Utilizando LocalStorage
 
 Vamos salvar os repositórios no localstorage, que é um banco de dados embutido no navegador que armazena chave valor em Strings.
 
-
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula09-utilizando-localstorage](https://github.com/tgmarinho/front-react/tree/aula09-utilizando-localstorage)
-
 
 ## Aula 10 - Navegação de rotas
 
-
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula10-navegacao-de-rotas](https://github.com/tgmarinho/front-react/tree/aula10-navegacao-de-rotas)
-
-
 
 ## Aula 11 - Carregando dados da API
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula11-carregando-dados-api](https://github.com/tgmarinho/front-react/tree/aula11-carregando-dados-api)
 
-
 ## Aula 12 - Definindo PropTypes
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula12-definindo-prop-types ](https://github.com/tgmarinho/front-react/tree/aula12-definindo-prop-types)
 
-
 ## Aula 13 - Exibindo Repositório
-
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula13-exibindo-repositorio](https://github.com/tgmarinho/front-react/tree/aula13-exibindo-repositorio)
 
-
-## Aula 14 - Exibindo Issues 
+## Aula 14 - Exibindo Issues
 
 Fim, código fonte: [https://github.com/tgmarinho/front-react/tree/aula14-exibindo-issues](https://github.com/tgmarinho/front-react/tree/aula14-exibindo-issues)
 
-
+<section
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <br />
+  <a
+    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+    className="twitter-share-button"
+    data-show-count="false"
+  >
+    Tweet
+  </a>
+</section>

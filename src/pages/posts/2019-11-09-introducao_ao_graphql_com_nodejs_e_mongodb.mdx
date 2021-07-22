@@ -8,7 +8,8 @@ image: /assets/img/graphql.png
 category: dev
 background: '#EB7728'
 ---
-## O que é GraphQL? 
+
+## O que é GraphQL?
 
 GraphQL é um protocolo de comunicação HTTP, criado pelo Facebook, ele contém algumas opiniões e regras de como informações serão transmitidas entre backend e frontend.
 
@@ -20,19 +21,19 @@ O benefício do GraphQL em relação REST é que temos apenas um endpoint (uma r
 
 Hoje na aplicação REST temos uma rota rota para cada funcionalidade:
 
-* GET /users - lista todos usuários
+- GET /users - lista todos usuários
 
-* GET /users/1 - retorna o usuário de id
+- GET /users/1 - retorna o usuário de id
 
-* POST /users - cria um usuário
+- POST /users - cria um usuário
 
-* PUT /users/1 - atualizad o usuário de id 1
+- PUT /users/1 - atualizad o usuário de id 1
 
-* DELETE /users/1 - deleta usuário de id 1
+- DELETE /users/1 - deleta usuário de id 1
 
 Com Graphql isso muda. Temos apenas uma rota
 
-* POST /graphql
+- POST /graphql
 
 Temos uma única rota para buscar, atualizar, deletar e criar registros - CRUD.
 
@@ -64,9 +65,7 @@ e na mesma query podemos passar mais de uma query.
 
 Vai me trazer os usuários e produtos
 
-
 Essa é a primeira diferença entre REST e Graphql. E um benefício muito grande.
-
 
 ## Fale mais
 
@@ -80,22 +79,21 @@ No graphql não precisamos ter todos os métodos HTTP: GET, POST, DELETE e PUT.
 
 No GraphQL temos tres métodos:
 
-1) Query
-2) Mutation
-3) Subscription
+1. Query
+2. Mutation
+3. Subscription
 
 Na Query você sempre utiliza para buscar qualquer informação, nunca altera nada no backend.
 
 A Mutation é usado para criar, alterar ou deletar um registro no backend.
 
-A Subscription é usada para ouvir informações em real time, é um listener de tempo real, sem necessidade de socket.io. 
+A Subscription é usada para ouvir informações em real time, é um listener de tempo real, sem necessidade de socket.io.
 
 Os três métodos são semânticos, mas é um padrão você sempre usar query para consulta, mutation para criar, deletar e editar registros e subscription para ouvir informações em tempo real.
 
 Query e Mutation é o mais comum e mais utilizado para começar pois com ambos é que podemos fazer o CRUD básico até avançado.
 
 Podemos fazer múltiplas atualizações, consultas na mesma requisição ao backend. Diferente da API Rest, no site [how-to-graphql](https://www.howtographql.com/basics/1-graphql-is-the-better-rest) mostra muito bem isso.
-
 
 Posso fazer:
 
@@ -129,11 +127,13 @@ mkdir graphql-intro-blog && cd graphql-intro-blog
 ```
 
 Inicio um projeto node.
+
 ```
 yarn  init  -y
 ```
 
 Abro o editor de código VSCODe
+
 ```
 code .
 ```
@@ -144,10 +144,10 @@ Geralmente para fazer API Rest ou qualquer outro projeto para web temos o `expre
 
 Podemos usar o `express` também porém com algumas funcionalidades a mais, então nesse caso vamos usar o `graphql-yoga` que é um wrapper do `express` por baixo dos panos, e ele tem um playground integrado.
 
-Adiciono a dependência: 
+Adiciono a dependência:
 
 ```
-yarn add graphql-yoga                                                                         
+yarn add graphql-yoga
 ```
 
 Crio uma pasta `src` com um arquivo `server.js` para configurar o servidor.
@@ -172,11 +172,11 @@ Para definir as rotas da aplicação, vamos criar um `schema.graphql` na pasta `
 Eu tenho dois tipos de rotas:
 
 ```
-type Query {  
+type Query {
 
 }
 
-type Mutation {  
+type Mutation {
 
 }
 ```
@@ -199,11 +199,11 @@ type User {
 }
 ```
 
-`users`: retorna um array de `User`, e veja que `user` é um tipo, é um formato de como os dados devem chegar com o tipo e nome. esses tipos não são necessariamente os tipos e variáveis do banco de dados, esse é como os tipos tem que ser disponibilizados no Graphql, vai ter alguém que resolve isso ai. 
+`users`: retorna um array de `User`, e veja que `user` é um tipo, é um formato de como os dados devem chegar com o tipo e nome. esses tipos não são necessariamente os tipos e variáveis do banco de dados, esse é como os tipos tem que ser disponibilizados no Graphql, vai ter alguém que resolve isso ai.
 
 o ponto de exclamação "!" informa que o dado é obrigatório. sempre o id vai ser obrigatório.
 
-E podemos ter uma rota que retorna um único usuário: 
+E podemos ter uma rota que retorna um único usuário:
 
 ```
 type Query {
@@ -225,7 +225,6 @@ type Mutation {
 Dessa vez criamos uma mutation que quando for chamado o `createUser` receberemos obrigatoriamente um name e email e ela retorna um User. Nesse caso vai ser criado um novo usuário com esses parâmetros e o mesmo vai ser retornado.
 
 Pronto definimos uma regra, e agora quem vai implementar isso ai, quem resolve essa parada? Vamos ver mais pra frente.
-
 
 Eu falei rotas para designar as queries e mutation mas o nome real e sem analogia ao Rest, é Schema, isso é uma schema do graphql. Vamos começar a aceitar o padrão que o graphql nos dá!
 
@@ -306,7 +305,6 @@ module.exports = {
 
 E o mesmo formato de array é que estou usando no type User do schema.graphql.
 
-
 E para testar na nossa query faremos:
 
 ```
@@ -336,7 +334,7 @@ Eu não defini a porta onde o servidor vai ser executado, mas nesse caso vai ser
 
 E o playground bonitão do Graphql Yoga vai ser exibido.
 
-Só fazer as queries para pegar id, name  e email de todos os usuários, se não quiser pode tirar o email por exemplo.
+Só fazer as queries para pegar id, name e email de todos os usuários, se não quiser pode tirar o email por exemplo.
 
 ```
 query {
@@ -462,36 +460,48 @@ mutation createNewUser {
 }
 ```
 
-
 Código fonte: [https://github.com/tgmarinho/graphql-node-blog](https://github.com/tgmarinho/graphql-node-blog)
-  
 
 ## Imagens do Graphqlcool rodando na minha máquina
 
-* Observa a documentação e o schema que ele nos mostra
+- Observa a documentação e o schema que ele nos mostra
 
 ![](https://raw.githubusercontent.com/tgmarinho/graphql-node-blog/master/screenshots/graphql_print1.png)
 
 ![](https://raw.githubusercontent.com/tgmarinho/graphql-node-blog/master/screenshots/graphql_print2.png)
 
-
 ## Quer mais?!
 
-* [http://graphql.org/](http://graphql.org/)
+- [http://graphql.org/](http://graphql.org/)
 
-* [https://www.howtographql.com/](https://www.howtographql.com/)
+- [https://www.howtographql.com/](https://www.howtographql.com/)
 
-* [https://relay.dev/](https://relay.dev/)
+- [https://relay.dev/](https://relay.dev/)
 
-* [https://github.com/prisma-labs/graphql-yoga](https://github.com/prisma-labs/graphql-yoga)
+- [https://github.com/prisma-labs/graphql-yoga](https://github.com/prisma-labs/graphql-yoga)
 
-* [https://www.howtographql.com/basics/1-graphql-is-the-better-rest/](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
-
+- [https://www.howtographql.com/basics/1-graphql-is-the-better-rest/](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
 
 ## Referência
 
-* [O vídeo mais didático para explicar sobre Graphql com NodeJS por Diego Fernandes da Rocketseat](https://www.youtube.com/watch?v=oD8GqurXZ-0)
-
+- [O vídeo mais didático para explicar sobre Graphql com NodeJS por Diego Fernandes da Rocketseat](https://www.youtube.com/watch?v=oD8GqurXZ-0)
 
 Obrigado!
 
+<section
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <br />
+  <a
+    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+    className="twitter-share-button"
+    data-show-count="false"
+  >
+    Tweet
+  </a>
+</section>
