@@ -39,7 +39,7 @@ export default function HomePage({ posts }) {
       </Head>
       <div tw="pt-14">
         <Header />
-        <SEO />
+        <SEO image="/tgmarinho.jpg" />
         {/* <div onClick={() => router.push('search')}>
           <Search />
         </div> */}
