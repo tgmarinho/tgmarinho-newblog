@@ -30,7 +30,6 @@ export const Post = (props) => {
     })
     const data = await response.json()
     setCounter(data.counter)
-    console.log('finalizei', data)
   }
 
   return (

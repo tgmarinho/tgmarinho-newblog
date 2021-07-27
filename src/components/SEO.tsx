@@ -48,7 +48,7 @@ const SEO: React.FC<SEOProps> = ({ title, path, image, description }) => {
       <meta httpEquiv="x-ua-compatible" content="IE=edge,chrome=1" />
       <meta name="MobileOptimized" content="320" />
       <meta name="HandheldFriendly" content="True" />
-      <meta name="theme-color" content="#8257E6" />
+      <meta name="theme-color" content="#F0F2F4" />
       <meta name="referrer" content="no-referrer-when-downgrade" />
       <link rel="icon" href="/tgmarinho.jpg" />
       <link
@@ -64,7 +64,7 @@ const SEO: React.FC<SEOProps> = ({ title, path, image, description }) => {
       {/* <meta name="p:domain_verify" content="c9fbfe63cbb851b07f811d420419fe94" /> */}
 
       {/* Microsoft */}
-      <meta name="msapplication-TileColor" content="#8257E6" />
+      <meta name="msapplication-TileColor" content="#F0F2F4" />
       {/* <meta name="msvalidate.01" content="28BC5C0006F3D3C447367698643C3C9B" /> */}
 
       {/* Google */}
@@ -99,35 +99,63 @@ const SEO: React.FC<SEOProps> = ({ title, path, image, description }) => {
       <meta name="twitter:image:width" content="1200" />
       <meta name="twitter:image:height" content="630" />
 
-      {/* Apple Touch Icons */}
-      <link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png" />
-      <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png" />
-      <link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png" />
+      <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+      <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+      <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
+      <link
+        rel="apple-touch-icon"
+        sizes="114x114"
+        href="/apple-icon-114x114.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="120x120"
+        href="/apple-icon-120x120.png"
+      />
       <link
         rel="apple-touch-icon"
         sizes="144x144"
-        href="/icons/icon-144x144.png"
+        href="/apple-icon-144x144.png"
       />
       <link
         rel="apple-touch-icon"
+        sizes="152x152"
+        href="/apple-icon-152x152.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-icon-180x180.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
         sizes="192x192"
-        href="/icons/icon-192x192.png"
+        href="/android-icon-192x192.png"
       />
       <link
-        rel="apple-touch-icon"
-        sizes="256x256"
-        href="/icons/icon-256x256.png"
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon-32x32.png"
       />
       <link
-        rel="apple-touch-icon"
-        sizes="384x384"
-        href="/icons/icon-384x384.png"
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="/favicon-96x96.png"
       />
       <link
-        rel="apple-touch-icon"
-        sizes="512x512"
-        href="/icons/icon-512x512.png"
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png"
       />
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="msapplication-TileColor" content="#F0F2F4" />
+      <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+      <meta name="theme-color" content="#F0F2F4" />
     </Head>
   )
 }
