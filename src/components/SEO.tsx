@@ -22,7 +22,7 @@ const SEO: React.FC<SEOProps> = ({ title, path, image, description }) => {
   const auxDescription = description || siteDescription
   const url = urljoin(siteUrl, path || ``)
 
-  const thumb = urljoin(siteUrl, image || `/og/tgmarinho.png`)
+  const thumb = urljoin(siteUrl, image || `/og-image/tgmarinho_homepage.png`)
 
   return (
     <Head>
