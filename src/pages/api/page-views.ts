@@ -33,12 +33,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     )
   }
 
-  const doc = await client.query(
+  const doc: any = await client.query(
     db.Get(db.Match(db.Index(COUNTER_VISIT_INDEX), slug))
   )
 
   if (req.method === 'PUT') {
-    const result = await client.query(
+    const result: any = await client.query(
       db.Update(doc.ref, {
         data: { ...doc.data, counter: doc.data.counter + 1 },
       })
@@ -58,12 +58,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     //   db.Get(db.Ref(db.Collection(COUNTER_VISIT_COLLECTION), { slug }))
     // )
 
-    const result = await client.query(
+    const result: any = await client.query(
       db.Get(db.Match(db.Index(COUNTER_VISIT_INDEX), slug))
     )
-
-    console.log('deu certo')
-    console.log(result.data.counter)
 
     return res.status(200).json({ counter: result.data.counter })
   }
