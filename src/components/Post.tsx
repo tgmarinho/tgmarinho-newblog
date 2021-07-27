@@ -19,15 +19,12 @@ export const Post = (props) => {
   }, [slug])
 
   const updateCounterByPostView = async (url) => {
-    console.log('countView', url)
     const response = await fetch(`/api/page-views?slug=${url}`, {
       method: 'PUT',
     })
-    console.log('finalizei', response)
   }
 
   const getCounterByPostView = async (url) => {
-    console.log('countView', url)
     const response = await fetch(`/api/page-views?slug=${url}`, {
       method: 'GET',
     })

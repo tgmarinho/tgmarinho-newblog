@@ -76,6 +76,7 @@ export default function Layout({ frontMatter, children }: Props) {
         <Header>
           <Title>{frontMatter?.title}</Title>
         </Header>
+
         <Meta>
           <Link href="/me">
             <a href="#">
@@ -89,9 +90,12 @@ export default function Layout({ frontMatter, children }: Props) {
             Last updated {formatter.format(new Date(frontMatter?.publishedAt))}
           </p>
         </Meta>
-
-        <Clap />
+        {/* <ClapWrapper>
+          <Clap />
+          {<p>18</p>}
+        </ClapWrapper> */}
         {children}
+
         <FormContainer>
           <FeedbackForm slug={slug} />
           <NewsletterForm />
@@ -103,6 +107,29 @@ export default function Layout({ frontMatter, children }: Props) {
     </MDXProvider>
   )
 }
+
+const ClapWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 170px;
+  /* width: 100%; */
+  /* padding-left: 75%; */
+  /* left: calc(120vw - 500px); */
+  /* left: calc(100% - 70px); */
+  /* right: 0; */
+  /* height: 50vh; */
+  /* 
+  @media (max-width: 1025px) {
+    display: block;
+    right: 8px;
+  } */
+
+  @media (min-width: 1200px) {
+    right: calc((100vw - 920px) / 2);
+  }
+`
 
 const Avatar = styled.img`
   width: 32px;

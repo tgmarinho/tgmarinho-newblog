@@ -45,6 +45,7 @@ const useBoop: Boop = ({
   skewX = 0,
   skewY = 0,
   timing = 150,
+
   springConfig = {
     tension: 300,
     friction: 10,
@@ -62,7 +63,8 @@ const useBoop: Boop = ({
             ? `translate3D(${x}px, ${y}px, ${z}px)
          rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)
          scale3D(${sx},${sy},${sz})
-         skew(${skewX}deg, ${skewY}deg)`
+         skew(${skewX}deg, ${skewY}deg)
+         `
             : `translate3D(0px, 0px, 0px)
          rotateX(0deg) rotateY(0deg) rotateZ(0deg)
          scale3D(1, 1, 1)

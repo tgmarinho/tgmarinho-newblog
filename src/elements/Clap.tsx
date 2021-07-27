@@ -1,32 +1,44 @@
 import { animated } from 'react-spring'
-
+import React from 'react'
 import useBoop from '@/hooks/useBoop'
-import { ClapIcon } from '@/components/icons'
+import { StarOutilineIcon, StarSolidIcon } from '@/components/icons'
 
 const Clap = () => {
-  const [styleClick, triggerClick] = useBoop({
+  const [styleHover, triggerHover] = useBoop({
+    rz: -1,
+    x: 1,
+    y: -1,
+    timing: 500,
+    delay: 100,
+  })
+
+  const [styleStarred, triggerStarred] = useBoop({
+    rotation: 4,
+    rx: 10,
     scale: 1.2,
     delay: 200,
   })
-  const [styleHover, triggerHover] = useBoop({
-    rotation: 4,
-    delay: 200,
-  })
 
-  console.log(triggerClick)
-  console.log(triggerHover)
+  const [isStarred, setIsStarred] = React.useState(false)
+
+  const handleClick = () => {
+    triggerStarred()
+    setIsStarred(!isStarred)
+  }
 
   return (
     <div className="container">
-      <div onMouseEnter={triggerHover}>
-        <animated.div style={styleHover}>
-          <button onClickCapture={triggerClick}>
-            <animated.div style={styleClick}>
-              <ClapIcon size={50} />
-            </animated.div>
-          </button>
-        </animated.div>
-      </div>
+      <animated.div onMouseMove={triggerHover} style={styleHover}>
+        <button onClickCapture={handleClick}>
+          <animated.div style={styleStarred}>
+            {isStarred ? (
+              <StarSolidIcon size={50} />
+            ) : (
+              <StarOutilineIcon size={50} />
+            )}
+          </animated.div>
+        </button>
+      </animated.div>
     </div>
   )
 }
