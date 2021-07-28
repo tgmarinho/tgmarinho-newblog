@@ -11,7 +11,6 @@ function CodeBlock({
   className: containerClass,
 }) {
   const [isCopied, setIsCopied] = useState(false)
-  console.log({ children })
 
   const onSuccess = () => {
     setIsCopied(true)
