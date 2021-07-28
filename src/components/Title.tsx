@@ -5,7 +5,7 @@ export const Title = styled.h1`
   font-size: 6rem;
   line-height: 0.9;
 
-  @media (max-width: 600px) {
-    font-size: 4.2rem;
+  @media (max-width: 680px) {
+    font-size: 3.7rem;
   }
 `

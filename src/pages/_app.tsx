@@ -74,7 +74,7 @@ const Main = styled.main`
 
   --text-serif: Recoleta, ui-serif, Georgia, serif;
   --text-mono: DM Mono, Menlo, ui-monospace, monospace;
-  --text-sans: Spectral, system-ui, -apple-system, sans-serif;
+  --text-sans: Spectral, serif, system-ui, -apple-system, sans-serif;
 
   background: var(--color-background);
   color: var(--color-text);

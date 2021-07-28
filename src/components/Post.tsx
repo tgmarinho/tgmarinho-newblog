@@ -42,11 +42,10 @@ export const Post = (props) => {
       <Link href={`posts/${slug}`}>
         <a tw="flex items-center justify-between cursor-pointer space-x-8">
           <div tw="space-y-4 w-full">
-            <h1 tw="text-3xl font-serif">{title}</h1>
+            <h1 tw="text-3xl sm:text-2xl font-serif">{title}</h1>
             <p tw="text-gray-600">{description}</p>
             <div tw="flex justify-between">
               <p tw="text-sm text-gray-600">
-                Written on{' '}
                 {new Intl.DateTimeFormat('en-US', {
                   month: 'long',
                   year: 'numeric',

@@ -17,7 +17,6 @@ import OrderedList from '@/elements/OrderedList'
 import Heading from '@/elements/Heading'
 import Subheading from '@/elements/Subheading'
 import ProblemStatement from '@/elements/ProblemStatement'
-import Clap from '@/elements/Clap'
 import { formatPath } from '@/lib/utils'
 
 const formatter = new Intl.DateTimeFormat('en-US', {
@@ -82,12 +81,12 @@ export default function Layout({ frontMatter, children }: Props) {
             <a href="#">
               <Author>
                 <Avatar src="/tgmarinho.jpg" alt="Thiago Marinho" />
-                <p>Thiago Marinho</p>
+                <p tw="text-base">Thiago Marinho</p>
               </Author>
             </a>
           </Link>
-          <p>
-            Last updated {formatter.format(new Date(frontMatter?.publishedAt))}
+          <p tw="text-base">
+            {formatter.format(new Date(frontMatter?.publishedAt))}
           </p>
         </Meta>
         {/* <ClapWrapper>
@@ -108,65 +107,31 @@ export default function Layout({ frontMatter, children }: Props) {
   )
 }
 
-const ClapWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: fixed;
-  top: 170px;
-  /* width: 100%; */
-  /* padding-left: 75%; */
-  /* left: calc(120vw - 500px); */
-  /* left: calc(100% - 70px); */
-  /* right: 0; */
-  /* height: 50vh; */
-  /* 
-  @media (max-width: 1025px) {
-    display: block;
-    right: 8px;
-  } */
-
-  @media (min-width: 1200px) {
-    right: calc((100vw - 920px) / 2);
-  }
-`
-
 const Avatar = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   object-fit: cover;
   border-radius: 50%;
-  /* border: 2px solid var(--gray400); */
 `
 
 const Author = styled.div`
   display: flex;
   align-items: center;
   color: var(--color-text-secondary);
-
   > :first-child {
     margin-right: 8px;
   }
 `
 
-const Blurb = styled.p`
-  ${tw`font-serif text-2xl`}
-
-  text-align: center;
-  //padding: 0 32px;
-  //
-`
-
 const Header = styled.header`
   background: var(--color-background);
-  margin-top: 70px;
+  margin-top: 8rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
-
+  max-width: 100vw;
   @media screen and (min-width: ${theme`screens.lg`}) {
     height: 100%;
   }
@@ -181,96 +146,83 @@ const Meta = styled.div`
 `
 
 const Article = styled.article`
-  display: grid;
+  display: flex;
   width: 100%;
-  padding-bottom: 20px;
-  grid-template-columns: 2rem 1fr 2rem;
-  line-height: 1.6;
-
+  flex-direction: column;
+  padding: 20px;
+  /* padding-bottom: 80px; */
+  /* grid-template-columns: 2rem 1fr 2rem; */
+  line-height: 2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   > * {
     grid-column: 2 / span 1;
     margin-bottom: 1.5em;
   }
-
   > ${Header} {
     grid-column: 1 / -1;
   }
-
   > ${Header}, > ${Meta} {
     margin-bottom: 48px;
-
     @media screen and (min-width: ${theme`screens.lg`}) {
-      //margin-bottom: 30px;
+      margin-bottom: 60px;
     }
   }
-
   > figure {
     margin-bottom: 2rem;
   }
-
   > ${CodeBlock} {
     margin-top: 24px;
     margin-bottom: 48px;
-
+    line-height: 1.6;
     border-radius: 0;
     border-right-width: 0;
     border-left-width: 0;
-
     grid-column: 1 / -1;
     max-width: 100vw;
-
     @media screen and (min-width: ${theme`screens.md`}) {
       grid-column: 5 / span 1;
-
       /* For some reason revert doesn't work here so I have to manually set it back */
       border-radius: 6px;
       border-right-width: 2px;
       border-left-width: 2px;
     }
   }
-
   > ${ThematicBreak} {
     margin-top: 24px;
     margin-bottom: 48px;
   }
-
   > ${Heading} {
     margin-top: 80px;
     margin-bottom: 32px;
   }
-
   > ${Subheading} {
     margin-top: 32px;
     margin-bottom: 24px;
   }
-
   > ${ProblemStatement} {
     margin-bottom: 48px;
   }
-
   > .full-width,
   > .full-width-2x,
   > .full-width-3x {
     grid-column: 1 / -1;
   }
-
   @media screen and (min-width: 770px) {
     grid-template-columns:
       1fr minmax(0, 6rem) minmax(0, 4rem) 2rem min(85ch, calc(100% - 2rem))
       2rem minmax(0, 4rem) minmax(0, 6rem) 1fr;
-
     > * {
       grid-column: 5 / span 1;
     }
-
     > .full-width {
       grid-column: 4 / -4;
     }
-
     > .full-width-2x {
       grid-column: 3 / -3;
     }
-
     > .full-width-3x {
       grid-column: 2 / -2;
     }
@@ -278,20 +230,22 @@ const Article = styled.article`
 `
 
 const Title = styled.h1`
-  ${tw`px-8 mx-auto font-serif text-center lg:mb-24`}
+  margin-top: -20px;
+  ${tw`text-center mx-auto`}
+  font-family: Recoleta;
   font-size: 3rem;
-  line-height: 0.9;
-  max-width: min(100vw, 14ch);
-
+  font-weight: 600;
+  line-height: 3.3rem;
+  width: 100%;
+  /* max-width: min(100vw, 14ch); */
   @media screen and (min-width: ${theme`screens.md`}) {
     font-size: 4rem;
-    line-height: 4rem;
+    line-height: 4.2rem;
   }
 `
 
 const FormContainer = styled.div`
   ${tw`space-y-8`}
-
   transform: translateY(14rem);
   margin-top: -10rem;
 `

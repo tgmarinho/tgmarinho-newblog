@@ -24,7 +24,7 @@ export function Search() {
         <Stats
           translations={{
             stats(nbHits, timeSpentMs) {
-              return `${nbHits} results founded in ${timeSpentMs}ms`
+              return `🚀 ${nbHits} results in ${timeSpentMs}ms`
             },
           }}
         />

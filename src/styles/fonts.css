@@ -38,12 +38,12 @@
  * © 2021 MyFonts Inc
 */
 
-/* @font-face {
+@font-face {
   font-family: 'Recoleta';
   font-weight: 400;
   src: url('/fonts/RecoletaRegular/font.woff2') format('woff2'),
     url('/fonts/RecoletaRegular/font.woff') format('woff');
-} */
+}
 
 /* @font-face {
   font-family: 'Recoleta';
@@ -51,7 +51,6 @@
   src: url('/fonts/RecoletaRegular/font.woff2') format('woff2'),
     url('/fonts/RecoletaRegular/font.woff') format('woff');
 } */
-
 
 /* @font-face {
   font-family: 'Spectral';
@@ -63,6 +62,30 @@
 @font-face {
   font-family: 'Spectral';
   src: url('/fonts/Spectral/Regular.ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral/Regular.ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* @font-face {
+  font-family: 'Andika';
+  src: url('/fonts/Andika/Andika-Regular.ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono/JetBrainsMono-Medium.ttf');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
