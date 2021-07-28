@@ -54,7 +54,6 @@ type Props = {
 export default function Layout({ frontMatter, children }: Props) {
   const slug = formatPath(frontMatter?.__resourcePath)
 
-  console.log(`https://tgmarinho.com${frontMatter?.image}`)
   return (
     <MDXProvider components={mdxComponents}>
       <Article>
