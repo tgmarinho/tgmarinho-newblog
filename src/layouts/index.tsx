@@ -53,6 +53,8 @@ type Props = {
 
 export default function Layout({ frontMatter, children }: Props) {
   const slug = formatPath(frontMatter?.__resourcePath)
+
+  console.log(`https://tgmarinho.com${frontMatter?.image}`)
   return (
     <MDXProvider components={mdxComponents}>
       <Article>
@@ -64,7 +66,7 @@ export default function Layout({ frontMatter, children }: Props) {
           <meta property="og:description" content={frontMatter?.description} />
           <meta
             property="og:image"
-            content={`https://tgmarinho.com/og-image/${slug}.png`}
+            content={`https://tgmarinho.com${frontMatter?.image}`}
           />
           <meta
             property="og:url"
