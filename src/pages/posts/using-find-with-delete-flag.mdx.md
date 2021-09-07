@@ -8,9 +8,17 @@ status: 'preview'
 ---
 
 
-test
+When you need remove some file in batch, use this:
+
+```bash
+find . -name "*.Identifier" -delete
+```
+
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTE3NzM4NTgyLC03MjI1ODkzNzNdfQ==
+eyJoaXN0b3J5IjpbLTQ0NDQzNDE5Nyw5MTc3Mzg1ODIsLTcyMj
+U4OTM3M119
 -->
