@@ -1,5 +1,5 @@
 ---
-title: 'Understanding Falsy and Truthy values in JavaScript'
+title: 'Using find with delete flag'
 blurb: 'Nice command Unix find'
 description: 'Nice command Unix find.'
 publishedAt: '2021-09-07'
@@ -20,6 +20,6 @@ Easy peasy, very usefull.
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0MjM4MDE4MCw5MTc3Mzg1ODIsLTcyMj
-U4OTM3M119
+eyJoaXN0b3J5IjpbNjIxOTUyNDAsLTU0MjM4MDE4MCw5MTc3Mz
+g1ODIsLTcyMjU4OTM3M119
 -->
