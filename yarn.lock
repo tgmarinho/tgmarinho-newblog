@@ -66,6 +66,11 @@
     "@algolia/requester-common" "4.10.3"
     "@algolia/transporter" "4.10.3"
 
+"@algolia/events@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@algolia/events/-/events-4.0.1.tgz#fd39e7477e7bc703d7f893b556f676c032af3950"
+  integrity sha512-FQzvOCgoFXAbf5Y6mYozw2aj5KCJoA3m4heImceldzPSMbdyS4atVjJzXKMsfX3wnZTFYwkkt8/z8UesLHlSBQ==
+
 "@algolia/logger-common@4.10.3":
   version "4.10.3"
   resolved "https://registry.yarnpkg.com/@algolia/logger-common/-/logger-common-4.10.3.tgz#6773d2e38581bf9ac57e2dda02f0c4f1bc72ce94"
@@ -2736,11 +2741,11 @@ ajv@^8.0.1:
     uri-js "^4.2.2"
 
 algoliasearch-helper@^3.5.3:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/algoliasearch-helper/-/algoliasearch-helper-3.5.4.tgz#21b20ab8a258daa9dde9aef2daa5e8994cd66077"
-  integrity sha512-t+FLhXYnPZiwjYe5ExyN962HQY8mi3KwRju3Lyf6OBgtRdx30d6mqvtClXf5NeBihH45Xzj6t4Y5YyvAI432XA==
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/algoliasearch-helper/-/algoliasearch-helper-3.7.4.tgz#3812ea161da52463ec88da52612c9a363c1b181d"
+  integrity sha512-KmJrsHVm5TmxZ9Oj53XdXuM4CQeu7eVFnB15tpSFt+7is1d1yVCv3hxCLMqYSw/rH42ccv013miQpRr268P8vw==
   dependencies:
-    events "^1.1.1"
+    "@algolia/events" "^4.0.1"
 
 algoliasearch@^4.10.3:
   version "4.10.3"
@@ -4490,11 +4495,6 @@ event-target-shim@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
   integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
-
-events@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
-  integrity sha1-nr23Y1rQmccNzEwqH1AEKI6L2SQ=
 
 events@^3.0.0:
   version "3.3.0"
