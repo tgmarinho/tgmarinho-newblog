@@ -6,8 +6,8 @@ import { MDXProvider } from '@mdx-js/react'
 import Link from 'next/link'
 import FeedbackForm from '@/components/FeedbackForm'
 import NewsletterForm from '@/components/NewsletterForm'
+import Pix from '@/components/Pix'
 import Navigation from '@/components/Navigation'
-
 import CodeBlock from '@/elements/CodeBlock'
 import ThematicBreak from '@/elements/ThematicBreak'
 import ExternalLink from '@/elements/ExternalLink'
@@ -97,6 +97,7 @@ export default function Layout({ frontMatter, children }: Props) {
         {children}
 
         <FormContainer>
+          <Pix />
           <FeedbackForm slug={slug} />
           <NewsletterForm />
         </FormContainer>
