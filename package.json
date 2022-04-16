@@ -34,7 +34,7 @@
     "@use-it/interval": "^1.0.0",
     "algoliasearch": "^4.13.0",
     "autoprefixer": "^10.2.6",
-    "babel-plugin-styled-components": "^1.13.2",
+    "babel-plugin-styled-components": "1.13.3",
     "clsx": "^1.1.1",
     "faunadb": "^4.5.4",
     "framer-motion": "^4.1.17",
