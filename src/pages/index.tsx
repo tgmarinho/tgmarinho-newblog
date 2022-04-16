@@ -18,17 +18,7 @@ import { Divider } from '@/components/Divider'
 import SEO from '@/components/SEO'
 import Navigation from '@/components/Navigation'
 
-export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
-  const posts = getAllPosts('post')
-
-  return { props: { posts } }
-}
-
-export default function HomePage({ posts }) {
-  posts.sort((a, b) =>
-    new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
-  )
-
+export default function HomePage() {
   const router = useRouter()
 
   return (

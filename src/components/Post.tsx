@@ -2,13 +2,13 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { HiArrowRight, HiOutlineEye } from 'react-icons/hi'
 import 'twin.macro'
+import { Highlight } from 'react-instantsearch-dom'
 
 export const Post = (props) => {
   const [counter, setCounter] = useState<string | number>('...')
 
   const {
     objectID: slug,
-    title,
     description,
     publishedAt,
     readingTime,
@@ -42,15 +42,18 @@ export const Post = (props) => {
       <Link href={`posts/${slug}`}>
         <a tw="flex items-center justify-between cursor-pointer space-x-8">
           <div tw="space-y-4 w-full">
-            <h1 tw="text-3xl sm:text-2xl font-serif">{title}</h1>
+            <h1 tw="text-3xl sm:text-2xl font-serif">
+              <Highlight attribute="title" hit={props.content} tagName="mark" />
+            </h1>
             <p tw="text-gray-600">{description}</p>
             <div tw="flex justify-between">
               <p tw="text-sm text-gray-600">
-                {new Intl.DateTimeFormat('en-US', {
-                  month: 'long',
-                  year: 'numeric',
-                  day: 'numeric',
-                }).format(new Date(publishedAt))}
+                {publishedAt &&
+                  new Intl.DateTimeFormat('en-US', {
+                    month: 'long',
+                    year: 'numeric',
+                    day: 'numeric',
+                  }).format(new Date(publishedAt))}
               </p>
               <div tw="flex justify-between items-center">
                 <p tw="text-sm mr-1 text-gray-600">{`${readingTime} min read •`}</p>

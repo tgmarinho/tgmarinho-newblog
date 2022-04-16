@@ -19,17 +19,7 @@ import SEO from '@/components/SEO'
 import SocialLinks from '@/components/SocialLinks'
 import { Layout } from '@/components/Layout'
 
-export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
-  const posts = getAllPosts('post')
-
-  return { props: { posts } }
-}
-
-export default function HomePage({ posts }) {
-  posts.sort((a, b) =>
-    new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
-  )
-
+export default function AboutMe() {
   const router = useRouter()
 
   return (
@@ -40,9 +30,6 @@ export default function HomePage({ posts }) {
       <div tw="pt-14">
         <Header />
         <SEO image="/tgmarinho.jpg" />
-        {/* <div onClick={() => router.push('search')}>
-          <Search />
-        </div> */}
         <Layout>
           <figure className="rounded-xl">
             <img
