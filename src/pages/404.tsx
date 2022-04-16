@@ -17,19 +17,7 @@ import { Post } from '@/components/Post'
 import { Divider } from '@/components/Divider'
 import SEO from '@/components/SEO'
 
-export const getStaticProps: GetStaticProps<PostMeta[]> = async () => {
-  const posts = getAllPosts('post')
-
-  return { props: { posts } }
-}
-
 export default function PageNotFound({ posts }) {
-  posts.sort((a, b) =>
-    new Date(a.publishedAt) < new Date(b.publishedAt) ? 1 : -1
-  )
-
-  const router = useRouter()
-
   return (
     <>
       <Head>
@@ -38,15 +26,7 @@ export default function PageNotFound({ posts }) {
       <div tw="py-32">
         <Header />
         <SEO />
-        {/* <div onClick={() => router.push('search')}>
-          <Search />
-        </div> */}
-        <Posts>
-          <Divider />
-          {posts.map((post: PostMeta) => (
-            <Post key={post.slug} content={post} />
-          ))}
-        </Posts>
+        <Search />
       </div>
     </>
   )

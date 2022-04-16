@@ -28,6 +28,7 @@ interface SpringStyle {
   transform?: SpringValue<string>
 }
 
+// eslint-disable-next-line no-unused-vars
 type Boop = (args: Args) => [SpringStyle, () => void]
 
 const useBoop: Boop = ({

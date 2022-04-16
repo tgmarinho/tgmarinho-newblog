@@ -22,7 +22,7 @@ const searchClient = algoliasearch(algolia.appId, algolia.searchOnlyApiKey)
 export function Search() {
   // force focus on search input
   React.useEffect(() => {
-    const searchInput = document.querySelector('.ais-SearchBox-input')
+    const searchInput = document.querySelector('.ais-SearchBox-input') as any
 
     if (searchInput) {
       searchInput.autoFocus = true

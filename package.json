@@ -22,7 +22,8 @@
     "analyze": "cross-env ANALYZE=true next build",
     "type-check": "tsc",
     "lint": "eslint \"src/**/*.+(ts|js|tsx)\"",
-    "format": "prettier \"src/**/*.+(ts|js|tsx)\" --write"
+    "format": "prettier \"src/**/*.+(ts|js|tsx)\" --write",
+    "fl": "yarn run format && yarn run lint"
   },
   "dependencies": {
     "@babel/parser": "^7.14.7",
