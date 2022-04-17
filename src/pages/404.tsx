@@ -24,7 +24,7 @@ export default function PageNotFound({ posts }) {
         <title>404 - Page Not Found - But go to home - @tgmarinho</title>
       </Head>
       <div tw="py-32">
-        <Header />
+        <Header title="404" description="Page Not Found 😅" />
         <SEO />
         <Search />
       </div>
