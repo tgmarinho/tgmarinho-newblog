@@ -9,6 +9,8 @@ import {
   FaYoutube,
   FaTrademark,
   FaArrowLeft,
+  FaRegMoneyBillAlt,
+  FaDiscord,
 } from 'react-icons/fa'
 import 'twin.macro'
 
@@ -38,13 +40,20 @@ export default function Navigation({ style, className }) {
             </a>
           </Link>
         </li>
-        {/*<li tw="ml-4" className="mr-4">*/}
-        {/*  <Link href="/search">*/}
-        {/*    <a className="hover:text-blue-500">*/}
-        {/*      <FaSearch />*/}
-        {/*    </a>*/}
-        {/*  </Link>*/}
-        {/*</li>*/}
+        <li tw="mr-4" className="mr-4">
+          <Link href="/sponsor">
+            <a className="hover:text-blue-500">
+              <FaRegMoneyBillAlt />
+            </a>
+          </Link>
+        </li>
+        <li tw="mr-4" className="mr-4">
+          <Link href="/community">
+            <a className="hover:text-blue-500">
+              <FaDiscord />
+            </a>
+          </Link>
+        </li>
         <li className="mr-4">
           <a
             href="https://github.com/tgmarinho"

@@ -6,7 +6,13 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import config from 'config'
 import { PixQrCode } from './pix/PixQrCode'
 
-export default function Pix({ className }) {
+type PixProps = {
+  className?: string
+  title?: string
+  description?: string
+}
+
+export default function Pix({ className, title, description }: PixProps) {
   const [isCopiedQrCode, setIsCopiedQrCode] = React.useState(false)
   const [isCopiedKey, setIsCopiedKey] = React.useState(false)
 
@@ -31,8 +37,12 @@ export default function Pix({ className }) {
         className
       )}
     >
-      <h1 className="text-2xl font-semibold">Pix-me</h1>
-      <p>If you like my content, consider sending me a Pix!</p>
+      <h1 className="text-2xl font-semibold">{title ? title : 'Pix-me'}</h1>
+      <p>
+        {description
+          ? description
+          : 'If you like my content, consider sending me a Pix!'}
+      </p>
       <div className="flex flex-row justify-center">
         <PixQrCode />
       </div>
@@ -44,7 +54,7 @@ export default function Pix({ className }) {
             className="w-1/2 h-10 text-sm font-semibold text-white bg-green-600 shadow-lg rounded-xl"
             whileTap={{ scale: 0.95 }}
           >
-            {!isCopiedQrCode ? 'Copy QR Code data' : 'Code Copied, Thanks! 🥂'}
+            {!isCopiedQrCode ? 'Copy QR Code' : 'Copied, Thanks! 🥂'}
           </motion.button>
         </CopyToClipboard>
 
@@ -55,7 +65,7 @@ export default function Pix({ className }) {
             className="w-1/2 h-10 text-sm font-semibold text-white bg-violet-600 shadow-lg rounded-xl"
             whileTap={{ scale: 0.95 }}
           >
-            {!isCopiedKey ? `Copy 'Chave Aleatória'` : 'Key Copied, Thanks! 🍾'}
+            {!isCopiedKey ? `Copy Chave Aleatória` : 'Copied, Thanks! 🍾'}
           </motion.button>
         </CopyToClipboard>
       </div>

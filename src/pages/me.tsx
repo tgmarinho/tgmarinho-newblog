@@ -28,7 +28,7 @@ export default function AboutMe() {
         <title>Hey I'm here!</title>
       </Head>
       <div tw="pt-14">
-        <Header />
+        <Header title="About" description="You can call me TG 😉" to="me" />
         <SEO image="/tgmarinho.jpg" />
         <Layout>
           <figure className="rounded-xl">
@@ -42,7 +42,7 @@ export default function AboutMe() {
             <div className="pt-6 px-8 space-y-4">
               <RoughNotationGroup show={true}>
                 <blockquote>
-                  <p className="text-lg lg:text-center md:text-justify font-medium">
+                  <p className="text-lg text-justify font-medium">
                     I'm a{' '}
                     <RoughNotation color="red" type="circle">
                       passionate
