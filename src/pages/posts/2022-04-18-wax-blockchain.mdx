@@ -1,0 +1,182 @@
+---
+title: Basic Wax blockchain
+description: Useful links, sample code about how to interact with 
+publishedAt: '2022-04-18'
+image: https://images.unsplash.com/photo-1574351406668-7585cd5b080c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+category: web3
+background: '#7AAB13'
+---
+
+Useful links to learn about **Wax Blockchain.**
+
+> Welcome Wax Blockchain - DAaps Developers 💻
+
+### Basic concepts
+
+**MainNet**
+
+ It's a network when the real tokens and data live - **Production**
+
+**TestNet**
+
+It's a network when the fake tokens and test data live - **Staging** 
+
+Make sure to use wallet main net in the mainnet blockchain, and test net wallet to testnet blockchain, both do not communicate with each other, you can't sign the mainnet transaction in testnet.
+
+### Wallet Setup
+
+- Setup  Wallet Wax **Test** Anchor
+
+
+- Setup wallet Wax **Main** net
+
+[](https://all-access.wax.io/signup)
+
+### **Marketplace**
+
+Buy, create nft, sell, auction, drop, inventory, etc...
+
+- [https://wax-test.atomichub.io/](https://wax-test.atomichub.io/) (test)
+- [https://wax.atomichub.io/](https://wax.atomichub.io/) (main)
+
+### **Dashboard Wax**
+
+Link to see the transactions on the wax blockchain
+
+[https://wax-test.bloks.io/](https://wax-test.bloks.io/) (test)
+
+[https://wax.bloks.io/](https://wax.bloks.io/) (main)
+
+Basic contract to create assets: [https://wax-test.bloks.io/account/atomicassets](https://wax-test.bloks.io/account/atomicassets)
+
+### Documentation
+
+- [https://github.com/pinknetworkx/atomicassets-contract/blob/master/src/atomicassets.cpp](https://github.com/pinknetworkx/atomicassets-contract/blob/master/src/atomicassets.cpp](https://github.com/pinknetworkx/atomicassets-contract/blob/master/src/atomicassets.cpp)) (Contract Wax Atomicasset)
+- [https://github.com/pinknetworkx/atomicassets-contract/wiki](https://github.com/pinknetworkx/atomicassets-contract/wiki)
+- [https://github.com/pinknetworkx/atomicassets-contract/wiki/Quickstart-Guide](https://github.com/pinknetworkx/atomicassets-contract/wiki/Quickstart-Guide)
+
+Wax is a fork from EOS, so you can learn deeply about wax reading this:
+
+[Home](https://eos.io/)
+
+### Articles
+
+- [https://eos-amsterdam.medium.com/complete-guide-to-nft-drops-on-wax-8ab84b2274b3](https://eos-amsterdam.medium.com/complete-guide-to-nft-drops-on-wax-8ab84b2274b3)
+
+[VG Guide - Creating NFTs on the WAX Blockchain](https://www.publish0x.com/virtugrana/vg-guide-creating-nfts-on-the-wax-blockchain-xwqpqjw)
+
+[Complete Guide To NFT Drops On WAX](https://eos-amsterdam.medium.com/complete-guide-to-nft-drops-on-wax-8ab84b2274b3)
+
+concept structure of  collection → schema → template | asset (mint)
+
+![Screen Shot 2021-12-17 at 14.41.31.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6ee34b44-f357-4cfb-a667-9f958baa250e/Screen_Shot_2021-12-17_at_14.41.31.png)
+
+### API s
+
+Swagger API Atomicassets / Atomicmarket - Mainnet
+
+[https://wax.api.atomicassets.io/docs/#/](https://wax.api.atomicassets.io/docs/#/)
+
+[Swagger UI](https://wax.api.atomicassets.io/docs/#/)
+
+Swagger API Atomicassets / Atomicmarket - Testnet
+
+[Swagger UI](https://test.wax.api.atomicassets.io/docs/)
+
+### **Developers - Code**
+
+
+Sample API Atomic Assets Call
+```
+import { explorerApi } from "../services/apisSetup";
+
+export const Collection = async (collectionName) => {
+	return explorerApi.getCollection(collectionName);
+};
+```
+
+Sample of RPC call:
+
+```
+import { jsonRpc } from "./apisSetup";
+
+
+export async function getBalance(account: string) {
+	const { core_liquid_balance } = await jsonRpc.get_account(account);
+
+	let text = "0.00000000 WAX";
+	let number = "0.00";
+
+	if (!!core_liquid_balance) {
+		text = String(core_liquid_balance);
+
+		const onlyNumbers = text.replace(/( WAX)/g, "");
+		number = Number(onlyNumbers).toFixed(2);
+	}
+
+	return { text, number };
+}
+```
+
+Sample Hooks to sign transaction and handle with contract:
+
+```
+import { UALContext } from "ual-reactjs-renderer";
+
+const ual: any = useContext(UALContext);
+
+async function sendActions(actions: Action[]) {
+		const tx: Record<string, unknown> = await ual.activeUser.signTransaction(
+			{ actions },
+			defaultTxOptions,
+		);
+		return tx;
+	}
+
+
+async function createCollection(
+		author,
+		collectionName,
+		allowNotify,
+		authorizedAccounts,
+		notifyAccounts,
+		marketFee,
+		data,
+	) {
+		return sendActions([
+			createAction("atomicassets", "createcol", {
+				author: author,
+				collection_name: collectionName,
+				allow_notify: allowNotify,
+				authorized_accounts: authorizedAccounts,
+				notify_accounts: notifyAccounts,
+				market_fee: marketFee,
+				data: data,
+			}),
+		]);
+}
+```
+
+Sample of `.env`:
+
+```bash
+# TESTNET
+# NEXT_PUBLIC_UAL_CHAIN_ID=f16b1833c747c43682f4386fca9cbb327929334a762755ebec17f6f23c9b8a12
+# NEXT_PUBLIC_UAL_CHAIN_HOST=testnet.wax.pink.gg
+# NEXT_PUBLIC_EXPLORER_API_ENDPOINT=https://test.wax.api.atomicassets.io
+ 
+# MAINNET
+NEXT_PUBLIC_UAL_CHAIN_ID=1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4
+NEXT_PUBLIC_UAL_CHAIN_HOST=wax.greymass.com
+NEXT_PUBLIC_EXPLORER_API_ENDPOINT=https://wax.api.atomicassets.io
+```
+
+You can find some content on **youtube**:
+
+Search like: how to create NFT atomic hub, how to create drop atomic hub
+
+__
+
+Thanks for reading!
+
+🚀
