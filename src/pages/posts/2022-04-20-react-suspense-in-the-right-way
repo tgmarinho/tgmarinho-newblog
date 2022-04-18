@@ -1,0 +1,503 @@
+---
+title: React Suspense - in the right way
+description: Study case about how to use React Suspense
+publishedAt: '2022-04-22'
+image: https://images.unsplash.com/photo-1574351406668-7585cd5b080c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+category: react
+background: '#7AAB13'
+---
+
+get the images from
+
+# React Suspense - in the right way
+
+### Table of Content 📑
+
+1. Concurrent Mode overview 
+2. React Suspense Overview
+3. Hands-on
+4. Contra Challenge
+5. Final Result
+6. Conclusion
+7. References
+
+### TL;DR ⌚
+
+Concurrent mode is a set of React features to stay the apps responsive and improve how the components are rendered in the browser.
+
+Suspense is "a mechanism for data fetching libraries to communicate to React that the data a component is reading is not ready yet".
+
+Contra challenge shows a Suspense code with three core issues in the code, we can find seven observations and explain all of them.
+
+SuspenseList is good to orchestrate other Suspense components, Suspense should have a fallback prop with loading or skeleton feedback UI, you can not need to use `useEffect` and `useState` to store data locally, and `useEffect` is a blocking approach, once it allows rendering de UI then fetch the data.
+
+Finally, `wrapPromise` is a basic implementation and is suggested to use Relay or other lib like React Query to use Suspense in the Right way.
+
+### Concurrent Mode overview 🏃‍♂️
+
+Concurrent mode is a set of React features to stay the apps responsive and improve how the components are rendered in the browser.
+
+Instead of the cycle of "render" to be blocking, with Concurrent mode is uninterruptible. I mean, the UI will render as you fetch new data, like a pipeline. What happens is React updates the DOM in memory and reflects it on the screen and the browser finishes to render.
+
+Now we don't need debouncing and throttling techniques to simulate Concurrent Mode artificially. React implemented a new component called Suspense that gives us this behavior in the best way and abstract way.
+
+More details you can read: [https://reactjs.org/docs/concurrent-mode-intro.html](https://reactjs.org/docs/concurrent-mode-intro.html)
+
+### React Suspense Overview 🙀
+
+The new component `<Suspense>` was added to React in the 16.6 version.
+
+Basically, this component receives a prop as loading state and the content as children. This way, Suspense holds the rendering showing a fallback component while some code loads.
+
+```sql
+const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
+
+// Show a spinner while the profile is loading
+<Suspense fallback={<Spinner />}>
+  <ProfilePage />
+</Suspense>
+```
+
+<aside>
+💡 Notice a `React.lazy` in the code above that is an approach to load the component as you need, how its a Promise, it can have a delay (lazy). But it's another approach.
+
+</aside>
+
+Suspense is like a middleware between rendering and data fetch, it's not a data fetching implementation. But Suspense holds the render while data is not ready. It does with glamour and declarative way, avoiding to use `useState` and `useEffect` hooks and also without needing to check if data is `null`.
+
+The documentation of React defines Suspense as "a mechanism for data fetching libraries to communicate to React that the data a component is reading is not ready yet".
+
+Let's see this code:
+
+```jsx
+// Special object resource contain result (pending, error, success) of the promise
+const resource = fetchProfileData();
+
+function ProfilePage() {
+  return (
+    <Suspense fallback={<h1>Loading profile...</h1>}>
+      <ProfileDetails />
+      <Suspense fallback={<h1>Loading posts...</h1>}>
+        <ProfileTimeline />
+      </Suspense>
+    </Suspense>
+  );
+}
+
+function ProfileDetails() {
+  // Try to read user info, although it might not have loaded yet
+  const user = resource.user.read();
+  return <h1>{user.name}</h1>;
+}
+
+function ProfileTimeline() {
+  // Try to read posts, although they might not have loaded yet
+  const posts = resource.posts.read();
+  return (
+    <ul>
+      {posts.map(post => (
+        <li key={post.id}>{post.text}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+Realize that we don't need anymore to check if`<h1>{user?.name}</h1>` is `null` or `undefined`, reducing the bugs and bundle sizes, once we know that operation chaining in JavaScript generates a big code and each bytes matters in [Google Lighthouse](https://developers.google.com/web/tools/lighthouse?hl=pt-br) metrics.
+
+ 
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6113a3fd-1033-43e7-8950-d24d4f0ec5d1/Untitled.png)
+
+Link to [code play](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=MYewdgzgLgBArhApgJxgXhgbwFAzAQwFtEAuGAIgCkALcGAEThHOwF9ttRJYDj14kyAHS9EncNBggo1FADkiifghQB-EYuxA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=true&timeTravel=false&sourceType=script&lineWrap=true&presets=env%2Creact%2Cstage-1%2Cstage-3&prettier=false&targets=&version=7.15.3&externalPlugins=&assumptions=%7B%7D)
+
+Read more: [https://reactjs.org/docs/concurrent-mode-suspense.html](https://reactjs.org/docs/concurrent-mode-suspense.html)
+
+The code below is the mechanism that communicates with Suspense, it is a basic implementation, is highly recommended to use lib like React Query or Relay to handle it Suspense.
+
+```jsx
+function wrapPromise(promise) {
+  let status = "pending";
+  let result;
+  let suspender = promise.then(
+    (r) => {
+      status = "success";
+      result = r;
+    },
+    (e) => {
+      status = "error";
+      result = e;
+    }
+  );
+  return {
+    read() {
+      if (status === "pending") {
+        throw suspender;
+      } else if (status === "error") {
+        throw result;
+      } else if (status === "success") {
+        return result;
+      }
+    }
+  };
+}
+```
+
+It is a wrapper that wraps over a Promise and provides a method that allows you to determine whether the data being returned from the Promise is ready to be read. If the Promise resolves, it returns the resolved data; if it rejects, it throws the error; and if it is still pending, it throws back the Promise.
+
+With that, we can create a resource and use it in our client component inside of Suspense.
+
+### Hands on 🧑‍💻
+
+To try Suspense right now, you need this setup:
+
+Change dependencies:
+
+```sql
+"dependencies": {
+    "react": "0.0.0-experimental-f6b8d31a7",
+    "react-dom": "0.0.0-experimental-f6b8d31a7",
+    "react-scripts": "1.0.7-alpha.60ae2b6d"
+  },
+
+```
+
+Use **createRoot**, replace inside of index.tsx file:
+
+```sql
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+to
+
+```sql
+const rootElement = document.getElementById('root');
+// Active Concurrent Mode
+ReactDOM.createRoot(rootElement).render(<App />);
+```
+
+Ok, if these small changes and adding wrapPromises or using another better approach like Relay, we already can use the Suspense feature.
+
+### Contra Challenge
+
+Let's check how Suspense can be used in the wrong way, using [Contra's](https://contra.com/tgmarinho) challenge create by [Boeing787](https://github.com/Boeing787).
+
+```jsx
+/**
+ * In this short assessment, the following code tries to implement the React Suspense API,
+ * but does so incorrectly. There are 3 core issues with how these components utilize Suspense and concurrent mode -- can you find them?
+ * 
+ * In your submission, be sure to:
+ * 1) Clearly identify what the 3 core issues are, and how they violate the principles of React Suspense;
+ * 2) Write and submit the code to fix the core issues you have identified in a gist of your own
+ * 
+ */
+
+import { Suspense, useState, useEffect } from 'react';
+
+const SuspensefulUserProfile = ({ userId }) => {
+  const [data, setData] = useState({});
+  useEffect(() => {
+    fetchUserProfile(userId).then((profile) => setData(profile));
+  }, [userId, setData])
+  return (
+    <Suspense>
+      <UserProfile data={data} />
+    </Suspense>
+  );
+};
+const UserProfile = ({ data }) => {
+  return (
+    <>
+      <h1>{data.name}</h1>
+      <h2>{data.email}</h2>
+    </>
+  );
+};
+const UserProfileList = () => (
+  <>
+    <SuspensefulUserProfile userId={1} />
+    <SuspensefulUserProfile userId={2} />
+    <SuspensefulUserProfile userId={3} />
+  </>
+);
+```
+
+Ok, there are three errors here can you find them?
+
+I found s**ome issues** below**:**
+
+1. There is no mechanism to handle with promises to and with Suspense to create a resource with wrapPromises;
+2. Is been created a `useState` data without needs;
+3. Are using `useEffect` to handle async fetch, this way the UI will be blocked, fetch data first then update UI and finish to render;
+4. There is no  `SuspenseList` to orchestrated the list of users, if order matters. I mean, can show user id 1, 2, and 3...; 
+5. There is no Error Boundary to keep it safe and show a friendly error message to the user or redirect to the page of error 500 or just break a chunk of code;
+6. There is no fallback prop to give feedback to users that something is loading;
+7. data could be undefined then [`data.name`](http://data.name) can throw an error without using the Suspense feature.
+
+So, let's put it in the **Right Way**:
+
+Inside of index.tsx lets use createRoot:
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<App />);
+```
+
+We are using `createRoot` to active concurrent mode.
+
+App.tsx
+
+```jsx
+import "./styles.css";
+import React from "react";
+import { ErrorBoundary } from "./ErrorBoundary";
+import { UserProfileList } from "./UserProfileList";
+
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <UserProfileList />
+    </ErrorBoundary>
+  );
+}
+```
+
+We are involving everything inside an `ErrorBoundary` to catch all errors and handle with that, as children we are passing the component `UserProfileList`.
+
+Before getting deep into the `UserProfileList`, let's see other files:
+
+ErrorBoundary.tsx: 
+
+```jsx
+import React from "react";
+
+export class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.log(error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children;
+  }
+}
+```
+
+Responsible to handle Errors, inside of app we can use one or more Error Boundaries.
+
+We have a loading feedback component:
+
+Loading.tsx:
+
+```jsx
+import React from "react";
+import loadingGif from "./loading.gif";
+
+export const Loading = () => (
+  <div>
+    <img src={loadingGif} alt="loading" />
+  </div>
+);
+```
+
+![22.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57f06159-0473-41b1-87b9-26e380ba53c5/22.gif)
+
+We also are creating an interface User — Typescript rules 🙏
+
+user.d.ts:
+
+```jsx
+export interface User {
+  name: string;
+  email: string;
+}
+```
+
+The things will start to be interesting right now when we create the `wrapperPromise.ts` our mechanism to watch the status of promise and return accordingly:
+
+wrapperPromise.ts:
+
+```jsx
+type Status = "pending" | "error" | "success";
+
+export function wrapPromise(promise) {
+  let status: Status = "pending";
+  let result: any;
+  const suspender = promise.then(
+    (r) => {
+      status = "success";
+      result = r;
+    },
+    (e) => {
+      status = "error";
+      result = e;
+    }
+  );
+  return {
+    read() {
+      switch (status) {
+        case "pending":
+          throw suspender;
+        case "error":
+          throw result;
+        case "success":
+          return result;
+        default:
+          new Error("Ops! Status unknown");
+      }
+    }
+  };
+}
+```
+
+This code is responsible to receive a promise, create a suspender variable and initialize the variables status and result, and return an object with the function `read` just to check the `status` and `throw` or `return` accordingly. 
+
+We created the services to access user data from API, and create a resource, our special object that accesses the result of promises in the Suspense component.
+
+services.ts:
+
+```jsx
+import { User } from "./user";
+import { wrapPromise } from "./wrapperPromise";
+
+const ENDPOINT = "https://jsonplaceholder.typicode.com";
+
+const getUser = async (userId: number) => {
+  const response = await fetch(`${ENDPOINT}/users/${userId}`);
+  const user = await response.json();
+  return user;
+};
+
+const fetchUserProfile = async (userId = 1, ms = 2000): Promise<User> => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(getUser(userId)), ms);
+  });
+};
+
+export const createResource = () => {
+  return {
+    1: wrapPromise(fetchUserProfile(1, 1000)),
+    2: wrapPromise(fetchUserProfile(2, 3000)),
+    3: wrapPromise(fetchUserProfile(3, 5000))
+  };
+};
+```
+
+`fetchUserProfile` is a function that receives `userId` as a parameter and `ms` as a millisecond just to simulate a delay and instantiate a `new Promise` and resolve the fetch of the user by `userId`, in `x` milliseconds.
+
+Last but not least we have the main file: `UserProfileList.tsx`
+
+```jsx
+import "./styles.css";
+import React, { Suspense, SuspenseList } from "react";
+import { createResource } from "./services";
+import { User } from "./user";
+import { Loading } from "./Loading";
+
+const resource = createResource();
+
+const UserProfile = ({ data: { name, email } }: { data: User }) => {
+  return (
+    <>
+      <h1>{name}</h1>
+      <h2>{email}</h2>
+    </>
+  );
+};
+
+const SuspensefulUserProfile = ({ userId }: { userId: number }) => {
+  const data = resource[userId].read();
+
+  return <UserProfile data={data} />;
+};
+
+export const UserProfileList = () => (
+  <SuspenseList revealOrder="forwards">
+    <Suspense fallback={<Loading />}>
+      <SuspensefulUserProfile userId={1} />
+    </Suspense>
+    <Suspense fallback={<Loading />}>
+      <SuspensefulUserProfile userId={2} />
+    </Suspense>
+    <Suspense fallback={<Loading />}>
+      <SuspensefulUserProfile userId={3} />
+    </Suspense>
+  </SuspenseList>
+);
+```
+
+`UserProfileList` receives a `SuspenseList`, a component special from Suspense feature to orchestrate all Suspense components, it receives a prop `revealOrder` in this case with value `forwards` that renders the first Suspense item to the last one. If order matters then you will wanna add it.
+
+The Suspense component should receive a fallback prop with a component to indicate that something is loading, in this case, a Loading gif will be displayed to the user.
+
+The children of `Suspense` receive the component that will be rendered as they fetch data. Suspense only renders when the promises are successfully completed. if is pending keep displaying the fallback component if some error is gotten throw an exception Error, and `App.js` involves all three with an `ErrorBoundary` that can handle this error.
+
+`SuspensefulUserProfile` component receives a prop with the `userId` that will be displayed, inside the component its tries to access the data from the resource, that is our special object:
+
+```jsx
+ const data = resource[userId].read();
+```
+
+`SuspensefulUserProfile` return the `UserProfile` component with `data` as a prop.
+
+```jsx
+const UserProfile = ({ data: { name, email } }: { data: User }) => {
+  return (
+    <>
+      <h1>{name}</h1>
+      <h2>{email}</h2>
+    </>
+  );
+};
+```
+
+Realize that we can just safely access the name and email without `null` or `undefined` results once this component will be rendered after `data` is ready.
+
+### Final Result 💻
+
+![https://media.giphy.com/media/9pj1RZrUjjv5r2UtAf/giphy.gif?cid=790b761126c7140c3cca4e77bfc7c9a971ffa06e129716e8&rid=giphy.gif&ct=g](https://media.giphy.com/media/9pj1RZrUjjv5r2UtAf/giphy.gif?cid=790b761126c7140c3cca4e77bfc7c9a971ffa06e129716e8&rid=giphy.gif&ct=g)
+
+Source Code: 
+
+[suspense_test](https://codesandbox.io/s/suspense-test-2voiz?file=/src/App.tsx)
+
+### Conclusion 🙏
+
+Even the `wrapPromises` work and we can use this code to give us the ability to use Suspense, we need consider to use other libs that improve this approach, for instance, Relay like React team suggest.
+
+Suspense and Concurrency mode came to stay, once we can improve UI/UX and DX because the code will be cleaner and declarative.
+
+We can also learn about [Server Components](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html).
+
+Always there is something to learn. Stay Hungry Stay Foolish.
+
+### References:
+
+- [https://reactjs.org/docs/concurrent-mode-suspense.html](https://reactjs.org/docs/concurrent-mode-suspense.html)
+- [https://reactjs.org/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html](https://reactjs.org/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html)
+- [https://blog.logrocket.com/react-suspense-for-data-fetching/](https://blog.logrocket.com/react-suspense-for-data-fetching/)
+
+Read more from me in [my blog](https://www.tgmarinho.com/):
