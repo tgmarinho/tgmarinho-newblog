@@ -48,9 +48,9 @@ export default function AboutMe() {
                       passionate
                     </RoughNotation>{' '}
                     software engineer working with Javascript, React and React
-                    Native with all ecosystems involved. I regard myself as a
-                    cutting-edge tech early adopter, an openminded and tuned in
-                    to the newest tools releases professional. I will be here{' '}
+                    Native and with all ecosystems involved. I regard myself as
+                    a cutting-edge tech early adopter, an open-minded and tuned
+                    into the newest tools releases professional. I will be here{' '}
                     <RoughNotation color="red" type="underline">
                       writing
                     </RoughNotation>{' '}
@@ -62,11 +62,11 @@ export default function AboutMe() {
                     <RoughNotation color="yellow" type="highlight">
                       coding
                     </RoughNotation>
-                    , sometimes I'll share some thoughts about{' '}
+                    , moreover sometimes I'll be sharing some thoughts about{' '}
                     <RoughNotation color="red" type="underline">
                       life
-                    </RoughNotation>
-                    .
+                    </RoughNotation>{' '}
+                    too.
                   </p>
                 </blockquote>
                 <figcaption className="font-medium text-center">

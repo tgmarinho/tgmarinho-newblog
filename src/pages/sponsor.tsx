@@ -29,28 +29,22 @@ export default function Support() {
         <title>Betting on People!</title>
       </Head>
       <div tw="pt-14">
-        <Header title="$ponsor" description="I can do more 🤙" to="support" />
+        <Header title="$ponsor" description="I can do more 🤙" to="sponsor" />
         <SEO image="/tgmarinho.jpg" />
         <Layout>
           <figure className="rounded-xl">
-            <img
-              className="w-32 h-32 mt-8 rounded-full mx-auto"
-              src="/tgmarinho.jpg"
-              alt="Thiago Marinho"
-              width="384"
-              height="512"
-            />
             <div className="pt-6 px-8 mb-4 space-y-4">
               <blockquote>
                 <p className="text-lg text-justify font-medium">
                   I've been here writing, doing some youtube videos, talking,
                   learning, and teaching in public about Tech and Software
-                  Development. Living my dream and passion to help people. I do
-                  it for pleasure and happiness. I realized my professional
-                  dream of getting an international and remote job, now I'm
-                  helping people to do the same. I helped more than ten people
-                  get a job in the tech world abroad, doing good money incoming.
-                  It's a great feeling. there is no price for it.
+                  Development. I'm Living my dream and passion of helping
+                  people. I do it for pleasure and happiness. I've realized my
+                  professional dream of working remote for an international
+                  company, now I'm helping people to do the same. I've helped
+                  more than ten people get a job in the tech world abroad,
+                  earning a good income. It's a great feeling. There's nothing
+                  like it!
                 </p>
               </blockquote>
               <figcaption className="font-medium text-center">
@@ -63,7 +57,7 @@ export default function Support() {
               </figcaption>
               <Pix
                 title="Support 💰"
-                description="Now you can help me, thanksgiving me, recognize my efforts, doing a quick Pix any value are welcome."
+                description="Now you can help me, thanking me, recognizing my efforts, doing a quick Pix any value is welcome."
               />
             </div>
 

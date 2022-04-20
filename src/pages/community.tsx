@@ -34,7 +34,7 @@ export default function Community() {
       <div tw="pt-14">
         <Header
           title="Community"
-          description="Together we go so far ✈️"
+          description="Together we can go further ✈️"
           to="community"
         />
         <SEO image="/tgmarinho.jpg" />
@@ -61,10 +61,10 @@ export default function Community() {
             <div className="pt-6 px-8 mb-4 space-y-4">
               <blockquote>
                 <p className="text-lg text-justify font-medium">
-                  I love to meet new people and talk. I believe that we can grow
-                  together by sharing experiences and helping each other. No one
-                  is too smart that can't learn more, and no one is dumb that
-                  can't teach something. So, please join the community, and
+                  I love to meet new people. I believe that we can grow together
+                  by sharing experiences and helping each other. No one is too
+                  smart that can't learn anything more, and no one is too dumb
+                  they cant teach something. So, please join the community, and
                   let's grow together.
                 </p>
               </blockquote>
