@@ -7,9 +7,7 @@ category: react
 background: '#7AAB13'
 ---
 
-# React Suspense - in the right way
-
-### Table of Content 📑
+<h3><strong> Table of Content 📑 </strong></h3>
 
 1. Concurrent Mode overview 
 2. React Suspense Overview
@@ -19,7 +17,7 @@ background: '#7AAB13'
 6. Conclusion
 7. References
 
-### TL;DR ⌚
+<h3><strong> TL;DR ⌚ </strong></h3>
 
 Concurrent mode is a set of React features to stay the apps responsive and improve how the components are rendered in the browser.
 
@@ -31,7 +29,7 @@ SuspenseList is good to orchestrate other Suspense components, Suspense should h
 
 Finally, `wrapPromise` is a basic implementation and is suggested to use Relay or other lib like React Query to use Suspense in the Right way.
 
-### Concurrent Mode overview 🏃‍♂️
+<h3><strong> Concurrent Mode overview 🏃‍♂️ </strong></h3>
 
 Concurrent mode is a set of React features to stay the apps responsive and improve how the components are rendered in the browser.
 
@@ -41,7 +39,7 @@ Now we don't need debouncing and throttling techniques to simulate Concurrent Mo
 
 More details you can read: [https://reactjs.org/docs/concurrent-mode-intro.html](https://reactjs.org/docs/concurrent-mode-intro.html)
 
-### React Suspense Overview 🙀
+<h3><strong> React Suspense Overview 🙀 </strong></h3>
 
 The new component `<Suspense>` was added to React in the 16.6 version.
 
@@ -101,13 +99,7 @@ function ProfileTimeline() {
 }
 ```
 
-Realize that we don't need anymore to check if`<h1>{user?.name}</h1>` is `null` or `undefined`, reducing the bugs and bundle sizes, once we know that operation chaining in JavaScript generates a big code and each bytes matters in [Google Lighthouse](https://developers.google.com/web/tools/lighthouse?hl=pt-br) metrics.
-
- 
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6113a3fd-1033-43e7-8950-d24d4f0ec5d1/Untitled.png)
-
-Link to [code play](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=MYewdgzgLgBArhApgJxgXhgbwFAzAQwFtEAuGAIgCkALcGAEThHOwF9ttRJYDj14kyAHS9EncNBggo1FADkiifghQB-EYuxA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=true&timeTravel=false&sourceType=script&lineWrap=true&presets=env%2Creact%2Cstage-1%2Cstage-3&prettier=false&targets=&version=7.15.3&externalPlugins=&assumptions=%7B%7D)
+Realize that we don't need anymore to check if`<h1>{user?.name}</h1>` is `null` or `undefined`, reducing the bugs and bundle sizes, once we know that operation chaining in JavaScript generates a big code and each bytes matters in [Google Lighthouse](https://developers.google.com/web/tools/lighthouse?hl=pt-br) metrics. Link to [code play](https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=MYewdgzgLgBArhApgJxgXhgbwFAzAQwFtEAuGAIgCkALcGAEThHOwF9ttRJYDj14kyAHS9EncNBggo1FADkiifghQB-EYuxA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=true&timeTravel=false&sourceType=script&lineWrap=true&presets=env%2Creact%2Cstage-1%2Cstage-3&prettier=false&targets=&version=7.15.3&externalPlugins=&assumptions=%7B%7D)
 
 Read more: [https://reactjs.org/docs/concurrent-mode-suspense.html](https://reactjs.org/docs/concurrent-mode-suspense.html)
 
@@ -145,7 +137,7 @@ It is a wrapper that wraps over a Promise and provides a method that allows you 
 
 With that, we can create a resource and use it in our client component inside of Suspense.
 
-### Hands on 🧑‍💻
+<h3><strong> Hands on 🧑‍💻 </strong></h3>
 
 To try Suspense right now, you need this setup:
 
@@ -181,7 +173,7 @@ ReactDOM.createRoot(rootElement).render(<App />);
 
 Ok, if these small changes and adding wrapPromises or using another better approach like Relay, we already can use the Suspense feature.
 
-### Contra Challenge
+<h3><strong> Contra Challenge </strong></h3>
 
 Let's check how Suspense can be used in the wrong way, using [Contra's](https://contra.com/tgmarinho) challenge create by [Boeing787](https://github.com/Boeing787).
 
@@ -474,7 +466,7 @@ const UserProfile = ({ data: { name, email } }: { data: User }) => {
 
 Realize that we can just safely access the name and email without `null` or `undefined` results once this component will be rendered after `data` is ready.
 
-### Final Result 💻
+<h3><strong> Final Result 💻 </strong></h3>
 
 ![https://media.giphy.com/media/9pj1RZrUjjv5r2UtAf/giphy.gif?cid=790b761126c7140c3cca4e77bfc7c9a971ffa06e129716e8&rid=giphy.gif&ct=g](https://media.giphy.com/media/9pj1RZrUjjv5r2UtAf/giphy.gif?cid=790b761126c7140c3cca4e77bfc7c9a971ffa06e129716e8&rid=giphy.gif&ct=g)
 
@@ -482,7 +474,7 @@ Source Code:
 
 [suspense_test](https://codesandbox.io/s/suspense-test-2voiz?file=/src/App.tsx)
 
-### Conclusion 🙏
+<h3><strong> Conclusion 🙏 </strong></h3>
 
 Even the `wrapPromises` work and we can use this code to give us the ability to use Suspense, we need consider to use other libs that improve this approach, for instance, Relay like React team suggest.
 
@@ -492,10 +484,12 @@ We can also learn about [Server Components](https://reactjs.org/blog/2020/12/21/
 
 Always there is something to learn. Stay Hungry Stay Foolish.
 
-### References:
+<h3><strong> References: </strong></h3>
 
 - [https://reactjs.org/docs/concurrent-mode-suspense.html](https://reactjs.org/docs/concurrent-mode-suspense.html)
 - [https://reactjs.org/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html](https://reactjs.org/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html)
 - [https://blog.logrocket.com/react-suspense-for-data-fetching/](https://blog.logrocket.com/react-suspense-for-data-fetching/)
 
-Read more from me in [my blog](https://www.tgmarinho.com/):
+__
+
+Thanks for reading 🚀

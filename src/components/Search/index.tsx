@@ -1,7 +1,7 @@
 import {
   InstantSearch,
   Configure,
-  InfiniteHits,
+  Hits,
   SearchBox,
   Stats,
 } from 'react-instantsearch-dom'
@@ -51,13 +51,7 @@ export function Search() {
         />
 
         <Posts>
-          <InfiniteHits
-            translations={{
-              loadPrevious: 'Load previous',
-              loadMore: 'Load more',
-            }}
-            hitComponent={Hit}
-          />
+          <Hits hitComponent={Hit} />
         </Posts>
       </InstantSearch>
     </SearchWrapper>

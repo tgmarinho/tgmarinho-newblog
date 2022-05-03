@@ -69,6 +69,18 @@ const getAllPosts = () => {
   )
 }
 
+const handleImage = (image) => {
+  console.log(image)
+  if (image) {
+    if (image.includes('https://')) {
+      return image
+    } else {
+      return `https://tgmarinho.com${image}`
+    }
+  }
+  return 'https://source.unsplash.com/random'
+}
+
 async function PupulateAlgolia() {
   const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID
   const adminApiKey = process.env.ALGOLIA_ADMIN_KEY
@@ -95,7 +107,7 @@ async function PupulateAlgolia() {
       category,
       publishedAt,
       readingTime,
-      image: `https://tgmarinho.com/${image}`,
+      image: handleImage(image),
     })
   )
 
