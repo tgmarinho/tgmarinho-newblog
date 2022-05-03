@@ -18,6 +18,7 @@ import Heading from '@/elements/Heading'
 import Subheading from '@/elements/Subheading'
 import ProblemStatement from '@/elements/ProblemStatement'
 import { formatPath } from '@/lib/utils'
+import SEO from '@/components/SEO'
 
 const formatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
@@ -54,58 +55,67 @@ type Props = {
 export default function Layout({ frontMatter, children }: Props) {
   const slug = formatPath(frontMatter?.__resourcePath)
 
-  return (
-    <MDXProvider components={mdxComponents}>
-      <Article>
-        <Head>
-          <title>{frontMatter?.title}</title>
-          <meta name="description" content={frontMatter?.description} />
-          <meta name="author" content="Thiago Marinho" />
-          <meta property="og:title" content={frontMatter?.title} />
-          <meta property="og:description" content={frontMatter?.description} />
-          <meta
-            property="og:image"
-            content={`https://tgmarinho.com${frontMatter?.image}`}
-          />
-          <meta
-            property="og:url"
-            content={`https://tgmarinho.com/posts/${slug}`}
-          />
-          <meta name="twitter:card" content="summary_large_image" />
-        </Head>
-        <Header>
-          <Title>{frontMatter?.title}</Title>
-        </Header>
+  const { title, image, description } = frontMatter
+  const path = `https://tgmarinho.com/posts/${slug}`
 
-        <Meta>
-          <Link href="/me">
-            <a href="#">
-              <Author>
-                <Avatar src="/tgmarinho.jpg" alt="Thiago Marinho" />
-                <p tw="text-base">Thiago Marinho</p>
-              </Author>
-            </a>
-          </Link>
-          <p tw="text-base">
-            {formatter.format(new Date(frontMatter?.publishedAt))}
-          </p>
-        </Meta>
-        {/* <ClapWrapper>
+  return (
+    <>
+      <MDXProvider components={mdxComponents}>
+        <Article>
+          <SEO {...{ title, path, image, description }} />
+          {/* <Head>
+            <title>{frontMatter?.title}</title>
+            <meta name="description" content={frontMatter?.description} />
+            <meta name="author" content="Thiago Marinho" />
+            <meta property="og:title" content={frontMatter?.title} />
+            <meta
+              property="og:description"
+              content={frontMatter?.description}
+            />
+            <meta
+              property="og:image"
+              content={`https://tgmarinho.com${frontMatter?.image}`}
+            />
+            <meta
+              property="og:url"
+              content={`https://tgmarinho.com/posts/${slug}`}
+            />
+            <meta name="twitter:card" content="summary_large_image" />
+          </Head> */}
+          <Header>
+            <Title>{frontMatter?.title}</Title>
+          </Header>
+
+          <Meta>
+            <Link href="/me">
+              <a href="#">
+                <Author>
+                  <Avatar src="/tgmarinho.jpg" alt="Thiago Marinho" />
+                  <p tw="text-base">Thiago Marinho</p>
+                </Author>
+              </a>
+            </Link>
+            <p tw="text-base">
+              {formatter.format(new Date(frontMatter?.publishedAt))}
+            </p>
+          </Meta>
+          {/* <ClapWrapper>
           <Clap />
           {<p>18</p>}
         </ClapWrapper> */}
-        {children}
+          {children}
 
-        <FormContainer>
-          <Pix />
-          <FeedbackForm slug={slug} />
-          <NewsletterForm />
-        </FormContainer>
-      </Article>
-      <Footer>
-        <Navigation tw="mt-8" />
-      </Footer>
-    </MDXProvider>
+          <FormContainer>
+            <Pix />
+            <FeedbackForm slug={slug} />
+            <NewsletterForm />
+          </FormContainer>
+        </Article>
+        <Footer>
+          <Navigation tw="mt-8" />
+        </Footer>
+      </MDXProvider>
+    </>
   )
 }
 
