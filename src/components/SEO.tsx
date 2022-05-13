@@ -82,6 +82,7 @@ const SEO: React.FC<SEOProps> = ({ title, path, image, description }) => {
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:site_name" content={headTitle} />
       <meta property="og:image" content={thumb} />
+      <meta property="og:image" itemProp="image" content={thumb} />
       <meta property="og:image:secure_url" content={thumb} />
       <meta property="og:image:alt" content="Thiago Marinho" />
       <meta property="og:image:type" content="image/png" />
