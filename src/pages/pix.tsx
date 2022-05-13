@@ -30,7 +30,7 @@ export default function HomePix() {
       </Head>
       <div tw="pt-14">
         <Header title="Pix 💰" description=" " to="pix" />
-        <SEO image="/pix/qrcode.png" title='Pix TG' description='Me envie um Pix rápido e fácil' />
+        <SEO image="/pix/qrcode1.png" title='Pix TG' description='Me envie um Pix rápido e fácil' />
         <Layout>
           <figure className="rounded-xl">
             <div className="px-8 mb-4 space-y-4">
