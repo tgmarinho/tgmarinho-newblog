@@ -1,0 +1,142 @@
+---
+title: How to merge two or more repos into a new one without losing the history
+description: How to merge two or more repos into a new one without losing the history
+publishedAt: '2022-06-01'
+category: github
+background: '#7AAB13'
+---
+
+Go *straight* to **[solution](#technical-way)** 🙏🏻
+
+### Storytelling
+
+I was working on **four different** repositories projects: frontend, sdk, smart contract, indexer.
+
+But I was *spending* a bunch of time because the contract generates new types during the build and deployment using typechain lib.
+
+I needed to replace all types in the SDK and indexer project, and we realized that the frontend app will need these types as well.
+
+This work is **manually** copy/paste, adapt the code with the changes, commit, and push when it happens.
+
+So, I decided to **give a try** [Monorepo](https://monorepo.tools/) with [TurboRepo](https://turborepo.org/).
+
+My idea was to **merge all repos** without losing the **history of commits** on them.
+
+For this, with a **help** of my **friend** [@rjborba](https://twitter.com/rjborba) we did:
+
+1. created a new repo on GitHub: `project` using TurboRepo and their structure(apps, packages).
+2. cloned each repo (frontend, sdk, smart contract, indexer) in another each folder (frontend2, sdk2, smart-contract2, indexer2).
+3. removed the origin from each repo and added the origin from `project`.
+4. moved the files and folders to another folder: sample: frontend2 now is frontend2/apps/ keeping only the .git folder in the root folder. sdk2 now is packages/sdk.
+5. committed the changes in each folder, and `git push --all` and `git pull --allow-unrelated-histories` to merge and resolve conflicts.
+
+This way I could have my Monorepo with all projects related to the history of commits in chronological order.
+
+
+
+### Technical Way
+
+> talk is cheap to show me the commands:
+
+1. `npx create-turbo@latest project`
+```
+~/Developer/project (main) » tree -L 3 --gitignore                                                                                             tgmarinho@Thiagos-MacBook-Pro
+.
+├── README.md
+├── apps
+│   ├── docs
+│   │   ├── README.md
+│   │   ├── next-env.d.ts
+│   │   ├── next.config.js
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── pages
+│   │   └── tsconfig.json
+│   └── web
+│       ├── README.md
+│       ├── next-env.d.ts
+│       ├── next.config.js
+│       ├── node_modules
+│       ├── package.json
+│       ├── pages
+│       └── tsconfig.json
+├── package.json
+├── packages
+│   ├── eslint-config-acme
+│   │   ├── index.js
+│   │   ├── node_modules
+│   │   └── package.json
+│   ├── tsconfig
+│   │   ├── README.md
+│   │   ├── base.json
+│   │   ├── nextjs.json
+│   │   ├── package.json
+│   │   └── react-library.json
+│   └── ui
+│       ├── Button.tsx
+│       ├── index.tsx
+│       ├── node_modules
+│       ├── package.json
+│       └── tsconfig.json
+├── turbo.json
+└── yarn.lock
+```
+
+Then **host it to the GitHub** and get the origin address: `git@github.com:myaccount/project.git` 
+
+
+Clone the project **frontend**:
+
+```
+git clone git@github.com:myaccount/frontend.git frontend2
+cd frontend2 && mkdir apps
+mv $(ls -la) frontend2/apps/
+mv frontend2/apps/.git .
+git remote remove origin
+git remote add origin git@github.com:myaccount/project.git
+git commit -m "send the frontend to monorepo"
+git fetch -a
+git pull --allow-unrelated-histories
+git push --all
+```
+
+
+Repeat the process to other repo - **SDK**:
+Clone the project sdk:
+
+```
+git clone  git@github.com:myaccount/sdk.git sdk
+cd sdk && mkdir apps
+mv $(ls -la) sdk/packages/
+mv sdk/packages/.git .
+git remote remove origin
+git remote add origin git@github.com:myaccount/project.git
+git commit -m "send the sdk to monorepo"
+git fetch -a
+git pull --allow-unrelated-histories
+git push --all
+```
+
+Repeat the process to other repo - **INDEXER**:
+Clone the project indexer:
+
+```
+git clone git@github.com:myaccount/indexer.git indexer
+cd indexer && mkdir apps
+mv $(ls -la) indexer/packages/
+mv indexer/packages/.git .
+git remote remove origin
+git remote add origin git@github.com:myaccount/project.git
+git commit -m "send the sdk to monorepo"
+git fetch -a
+git pull --allow-unrelated-histories
+git push --all
+```
+
+Finish ✌🏻
+
+
+Ref: [gist x-yuri](https://gist.github.com/x-yuri/9890ab1079cf4357d6f269d073fd9731)
+__
+
+Thanks for reading 🚀
