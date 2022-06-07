@@ -29,7 +29,7 @@ For this, with a **help** of my **friend** [@rjborba](https://twitter.com/rjborb
 2. cloned each repo (frontend, sdk, smart contract, indexer) in another each folder (frontend2, sdk2, smart-contract2, indexer2).
 3. removed the origin from each repo and added the origin from `project`.
 4. moved the files and folders to another folder: sample: frontend2 now is frontend2/apps/ keeping only the .git folder in the root folder. sdk2 now is packages/sdk.
-5. committed the changes in each folder, and `git push --all` and `git pull --allow-unrelated-histories` to merge and resolve conflicts.
+5. committed the changes in each folder, and `git push --all` and `git pull origin main --allow-unrelated-histories` to merge and resolve conflicts.
 
 This way I could have my Monorepo with all projects related to the history of commits in chronological order.
 
@@ -90,14 +90,14 @@ Clone the project **frontend**:
 
 ```
 git clone git@github.com:myaccount/frontend.git frontend2
-cd frontend2 && mkdir apps
-mv $(ls -la) frontend2/apps/
-mv frontend2/apps/.git .
+cd frontend2 && mkdir -p apps/frontend
+mv $(ls -la) apps/frontend
+mv apps/frontend/.git .
 git remote remove origin
 git remote add origin git@github.com:myaccount/project.git
-git commit -m "send the frontend to monorepo"
+git add . && git commit -m "send the frontend to monorepo"
 git fetch -a
-git pull --allow-unrelated-histories
+git pull origin main --allow-unrelated-histories
 git push --all
 ```
 
@@ -107,14 +107,14 @@ Clone the project sdk:
 
 ```
 git clone  git@github.com:myaccount/sdk.git sdk
-cd sdk && mkdir apps
-mv $(ls -la) sdk/packages/
-mv sdk/packages/.git .
+cd sdk && mkdir -p packages/sdk
+mv $(ls -la) packages/sdk
+mv packages/sdk/.git .
 git remote remove origin
 git remote add origin git@github.com:myaccount/project.git
-git commit -m "send the sdk to monorepo"
+git add . && git commit -m "send the sdk to monorepo"
 git fetch -a
-git pull --allow-unrelated-histories
+git pull origin main --allow-unrelated-histories
 git push --all
 ```
 
@@ -123,14 +123,14 @@ Clone the project indexer:
 
 ```
 git clone git@github.com:myaccount/indexer.git indexer
-cd indexer && mkdir apps
-mv $(ls -la) indexer/packages/
-mv indexer/packages/.git .
+cd indexer && mkdir -p packages/indexer
+mv $(ls -la) packages/indexer
+mv packages/indexer/.git .
 git remote remove origin
 git remote add origin git@github.com:myaccount/project.git
-git commit -m "send the sdk to monorepo"
+git add . && git commit -m "send the indexer to monorepo"
 git fetch -a
-git pull --allow-unrelated-histories
+git pull origin main --allow-unrelated-histories
 git push --all
 ```
 
