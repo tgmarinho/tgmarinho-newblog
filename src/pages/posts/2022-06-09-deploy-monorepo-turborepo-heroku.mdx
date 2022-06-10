@@ -19,7 +19,7 @@ I did a post about it. [Check it out](https://dev.to/tgmarinhodev/how-to-merge-t
 The structure of my monorepo:
 
 ```
-~/Developer/blog/monorepo (main*) » tree -L 3 --gitignore                                                                                                                                      tgmarinho@Thiagos-MacBook-Pro
+~/Developer/blog/monorepo (main*) » tree -L 3 --gitignore
 .
 ├── README.md
 ├── apps
@@ -87,14 +87,14 @@ smart-contract project; and my script copies this `types` folder and pastes it t
 
 The sdk should do the build process and use the contract-types, then the frontend app should build and use the sdk that uses the contract-types.
 
-The indexer-api should build using the contract-types.
+The indexer-api (backend) should build using the contract-types.
 
 Order of the build:
 
 1. smart-contract
 2. the types of contract-types should exist
 3. sdk 
-4. parallel frontend app and indexer-api
+4. parallel frontend and backend
 
 [TurboRepo](https://turborepo.org/) does it in a fast and intelligent way without much effort.
 
@@ -106,8 +106,8 @@ With this in mind, let's see **how to set up the Heroku to work on monorepo**:
 
 Create two apps on heroku:
 
-1. frontend - heroku create -a frontend
-2. backend -  heroku create -a backend
+1. frontend - `heroku create -a frontend`
+2. backend -  `heroku create -a backend`
 
 ### **Add Buildpacks**
 
@@ -178,7 +178,7 @@ We’ve added three scripts: heroku-postbuild, prod-frontend, and prod-backend.
 
 Heroku will automatically run the heroku-postbuild script for us upon deployment.
 
-Our heroku-postbuild script looks for environment variables $CLIENT_ENV or $SERVER_ENV to determine which script to run `prod-frontend` or `prod-backend`.
+Our heroku-postbuild script looks for environment variables `$CLIENT_ENV` or `$SERVER_ENV` to determine which script to run `prod-frontend` or `prod-backend`.
 
 ### **Setting environment variables on Heroku**
 
@@ -235,7 +235,7 @@ See the *package.json* complete:
 }
 ```
 
-🚨 I recommend not using the *caches*, but it's not a best practice; it's better to study a better solution; I was facing issues keeping it `true`:
+🚨 I recommend not using the *caches*, but it's not a best practice; it's nice to study a better solution; I was facing issues keeping it `true`:
 
 ```
 heroku config:set USE_YARN_CACHE=false -a frontend
@@ -297,9 +297,13 @@ Finish ✌🏻
 References: 
 
 [Deploying a Monorepo to Heroku - by Sam](https://towardsdev.com/deploying-a-monorepo-to-heroku-74c0d5a1f79e)
+
 [Pruning dependencies - Heroku Support NodeJS](https://devcenter.heroku.com/articles/nodejs-support)
+
 [javascript-monorepos](https://www.robinwieruch.de/javascript-monorepos/)
+
 [monorepo.tools](https://monorepo.tools/)
+
 [turborepo](https://turborepo.org/)
 
 __
