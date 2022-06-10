@@ -10,7 +10,7 @@ background: '#7AAB13'
 Read it on [Dev.To]()
 
 
-### *Intro*
+### **Intro**
 
 I replaced four (sdk, smart-contract, indexer-api, frontend app) GitHub projects with only one using Monorepo / TurboRepo.
 
@@ -76,7 +76,7 @@ The structure of my monorepo:
 
 ```
 
-### *A little bit of the context*
+### **A little bit of the context**
 
 The hard part was hosting, and I'll tell you how to do it on Heroku.
 
@@ -102,14 +102,14 @@ There are others things I'm omitting because they are not too important, but we 
 
 With this in mind, let's see **how to set up the Heroku to work on monorepo**:
 
-### *Deployment - Create the Apps*
+### **Deployment - Create the Apps**
 
 Create two apps on heroku:
 
 1. frontend - heroku create -a frontend
 2. backend -  heroku create -a backend
 
-### *Add Buildpacks*
+### **Add Buildpacks**
 
 In both apps, you can connect Heroku apps to the Github. This way, you will save time with CI/CD after committing to the main branch.
 Also, in both ones, you need to follow the same steps:
@@ -128,7 +128,7 @@ heroku buildpacks:add -a backend heroku-community/multi-procfile
 heroku buildpacks:add -a backend heroku/nodejs
 ```
 
-### *Create the Procfile*
+### **Create the Procfile**
 
 *Procfile* is a file that receives the commands to run when starting an application; if you have a basic node.js Heroku app, you don't need this once the `package.json` has the start script instruction.
 
@@ -158,7 +158,7 @@ heroku config:set -a backend PROCFILE=apps/backend/Procfile
 ```
 
 
-### *Setup the root package.json on monorepo*
+### **Setup the root package.json on monorepo**
 
 Heroku now knows where to find our Procfiles; however, because we have two separate applications stored within the frontend (client) and backend (server) directories, each has its dependencies. 
 
@@ -180,7 +180,7 @@ Heroku will automatically run the heroku-postbuild script for us upon deployment
 
 Our heroku-postbuild script looks for environment variables $CLIENT_ENV or $SERVER_ENV to determine which script to run `prod-frontend` or `prod-backend`.
 
-### *Setting environment variables on Heroku*
+### **Setting environment variables on Heroku**
 
 Now add new CLIENT_ENV and SERVER_ENV on heroku apps:
 
@@ -280,7 +280,7 @@ Last but not least, you should run the deploy and see the result.
 
 ✅ Build and Deploy should pass. 🙏🏻
 
-### *Conclusion*
+### **Conclusion**
 
 Excellent, you have a monorepo with turborepo running in production inside the Heroku.
 
