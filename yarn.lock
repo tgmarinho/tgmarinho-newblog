@@ -1298,10 +1298,10 @@
     ufo "^0.7.10"
     unstorage "^0.2.8"
 
-"@netlify/plugin-nextjs@4.3.2":
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.3.2.tgz#ada997c15cfbaeabb5f30057653303f56895cf71"
-  integrity sha512-jRCDoYTH3LV6rK+5nciE8Kf60iF+xa/nQskLldct0iOmFg3zW2d318RGm67UUrTiia8E+32YVIkB+dTOv7wZAQ==
+"@netlify/plugin-nextjs@4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.6.0.tgz#73a27cf7a6b3355d327f9d1b631058f96971f5c0"
+  integrity sha512-8zqYsiUbQtA8k4on66yCLbP9PTDC6cz2uAybXkO3nIipzcS3guxvMavFxhrUhTefaULOjnompbYnRzY7bahz5g==
   dependencies:
     "@netlify/functions" "^1.0.0"
     "@netlify/ipx" "^0.0.10"
@@ -2087,10 +2087,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-dom@17.0.2":
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.2.tgz#35654cf6c49ae162d5bc90843d5437dc38008d43"
-  integrity sha512-Icd9KEgdnFfJs39KyRyr0jQ7EKhq8U6CcHRMGAS45fp5qgUvxL3ujUCfWFttUK2UErqZNj97t9gsVPNAqcwoCg==
+"@types/react-dom@18.0.6":
+  version "18.0.6"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.6.tgz#36652900024842b74607a17786b6662dd1e103a1"
+  integrity sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==
   dependencies:
     "@types/react" "*"
 
