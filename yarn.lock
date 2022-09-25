@@ -1298,10 +1298,10 @@
     ufo "^0.7.10"
     unstorage "^0.2.8"
 
-"@netlify/plugin-nextjs@4.3.2":
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.3.2.tgz#ada997c15cfbaeabb5f30057653303f56895cf71"
-  integrity sha512-jRCDoYTH3LV6rK+5nciE8Kf60iF+xa/nQskLldct0iOmFg3zW2d318RGm67UUrTiia8E+32YVIkB+dTOv7wZAQ==
+"@netlify/plugin-nextjs@4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.6.0.tgz#73a27cf7a6b3355d327f9d1b631058f96971f5c0"
+  integrity sha512-8zqYsiUbQtA8k4on66yCLbP9PTDC6cz2uAybXkO3nIipzcS3guxvMavFxhrUhTefaULOjnompbYnRzY7bahz5g==
   dependencies:
     "@netlify/functions" "^1.0.0"
     "@netlify/ipx" "^0.0.10"
@@ -2103,12 +2103,13 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@17.0.2":
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"
-  integrity sha512-Xt40xQsrkdvjn1EyWe1Bc0dJLcil/9x2vAuW7ya+PuQip4UYUaXyhzWmAbwRsdMgwOFHpfp7/FFZebDU6Y8VHA==
+"@types/react@18.0.21":
+  version "18.0.21"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.21.tgz#b8209e9626bb00a34c76f55482697edd2b43cc67"
+  integrity sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==
   dependencies:
     "@types/prop-types" "*"
+    "@types/scheduler" "*"
     csstype "^3.0.2"
 
 "@types/resolve@1.17.1":
