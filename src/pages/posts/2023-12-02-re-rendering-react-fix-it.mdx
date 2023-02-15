@@ -1,0 +1,14 @@
+how to fix re-rendering on react lib
+Re-rendering in React can be optimized to improve performance and reduce the number of unnecessary re-renders in your application. Here are a few tips to help you fix re-rendering in React:
+
+Use React.memo: React.memo is a higher-order component that allows you to optimize the rendering of functional components by memoizing the component's output. This means that the component will only re-render if its props have changed.
+
+Avoid using setState unnecessarily: When you use setState, React will schedule a re-render of your component. Avoid calling setState unnecessarily, as this can cause unnecessary re-renders and slow down your application.
+
+Use shouldComponentUpdate: shouldComponentUpdate is a lifecycle method that allows you to control when a component should re-render. By implementing this method, you can decide whether or not to re-render a component based on its props and state.
+
+Use the useEffect hook wisely: The useEffect hook allows you to perform side effects in your components. However, if not used carefully, it can cause unnecessary re-renders. Make sure to only call the useEffect hook when necessary, and to use the dependencies array to specify which values should trigger a re-render.
+
+Avoid using complex data structures: Complex data structures, such as arrays and objects, can cause performance issues in React when they are re-created on every render. Try to use simple data structures, or consider using React.useMemo to memoize complex calculations.
+
+By following these tips and understanding the principles of efficient re-rendering in React, you can improve the performance of your React application and reduce the number of unnecessary re-renders.

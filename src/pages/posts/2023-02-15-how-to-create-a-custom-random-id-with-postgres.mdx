@@ -1,0 +1,50 @@
+---
+title: How to create a custom random ID with Postgres
+description: Helper function for creating a custom random ID like: a9Kl12
+publishedAt: '2023-02-15'
+image: https://images.unsplash.com/photo-1603860785202-70ee34aa7b68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80
+category: database
+background: '#7AAB13'
+---
+
+Create a function:
+
+```sql
+CREATE OR REPLACE FUNCTION generate_random_id(length integer)
+RETURNS text AS $$
+DECLARE
+  alphabet text;
+  id text := '';
+  i integer;
+BEGIN
+  alphabet := 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  FOR i IN 1..length LOOP
+    id := id || substr(alphabet, floor(random() * length(alphabet) + 1)::integer, 1);
+  END LOOP;
+  RETURN id;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+Test
+
+```sql
+SELECT generate_random_id(10); -- returns a random ID with 10 characters
+```
+
+
+Now you can create a table this way:
+
+```sql
+CREATE TABLE "public"."product" ("id" text default generate_random_id(6), "name" text NOT NULL, PRIMARY KEY ("id") , UNIQUE ("id"));
+```
+
+
+Try to insert and select the product table to see the id auto generated.
+
+```sql
+INSERT INTO product (name) VALUES ('paper');
+```
+
+
+Done.
