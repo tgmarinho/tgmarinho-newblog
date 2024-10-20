@@ -73,8 +73,8 @@
   "devDependencies": {
     "@netlify/plugin-nextjs": "4.6.0",
     "@types/node": "^17.0.24",
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.2",
+    "@types/react": "17.0.83",
+    "@types/react-dom": "17.0.25",
     "@typescript-eslint/eslint-plugin": "5.19.0",
     "@typescript-eslint/parser": "5.19.0",
     "babel-plugin-macros": "^3.1.0",
