@@ -31,7 +31,7 @@
     "@babel/standalone": "^7.17.9",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@tinacms/cli": "1.5.25",
+    "@tinacms/cli": "1.6.2",
     "@types/babel-plugin-macros": "^2.8.5",
     "@use-it/interval": "^1.0.0",
     "algoliasearch": "^4.13.0",
